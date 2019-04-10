@@ -21,11 +21,11 @@ public class CallBackController {
 	@RequestMapping("/callHunter")
 	public void callHunter() {
 		try {
-			URL callHunterURL = new URL("www.google.com");
-			Map<String, String> inputParam = new HashMap<>();
-
+			URL callHunterURL = new URL("https://api.staging.contaquanto.com/graphql");
+			Map<String, String> inputHeaders = new HashMap<>();
+			inputHeaders.put("Content-Type", "application/graphql");
 			String query = "";
-			GraphQLClientHandling client = new GraphQLClientHandling(callHunterURL, inputParam);
+			GraphQLClientHandling client = new GraphQLClientHandling(callHunterURL, inputHeaders);
 
 			JsonObject variables = new JsonObject();
 			variables.addProperty("searchText", "test");
