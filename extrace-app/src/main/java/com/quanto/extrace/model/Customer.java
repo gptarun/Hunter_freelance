@@ -1,4 +1,4 @@
-package com.quanto.extrace.beans;
+package com.quanto.extrace.model;
 
 import org.springframework.stereotype.Component;
 
