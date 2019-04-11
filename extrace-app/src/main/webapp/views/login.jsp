@@ -9,7 +9,7 @@
 <body>
 	<h1 align="center">Please enter bank account info sadas</h1>
 	<br>
-	<form align="center" action="" onsubmit="redirect(this);">
+	<form align="center" method="POST" action="" onsubmit="redirect(this);">
 		Branch:  <input type="text" name="branch" value="Branch"> <br><br>
 		Account: <input type="text" name="account" value="Account"> <br><br>
 		<br> <input type="submit" value="Connect My Account">
@@ -17,8 +17,14 @@
 
 	<script>
 		function redirect(elem) {
-			elem.setAttribute("action", "/views/bank.jsp");
-			elem.submit();
+			var url = "http://localhost:8080/callHunter";        	
+ 			var req = {
+    				method: 'POST',
+    				url: url,		
+    				headers: {
+						'Content-Type': 'application/json'
+					}
+	   			};
 		}
 	</script>
 
