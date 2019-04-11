@@ -38,11 +38,15 @@ public class GraphQLClientHandling {
 	 * Creates a new instance of this class for the given GraphQL endpoint in string format.
 	 * 
 	 * @param endpoint
-	 *            The endpoint to use.
+	 * The endpoint to use.
 	 * @param headerType
 	 * @param headerValue
 	 * @throws MalformedURLException 
 	 */
+	public GraphQLClientHandling() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	@SuppressWarnings("serial")
 	public GraphQLClientHandling(@Value("{hunter.api.url}") String endpoint, @Value("{hunter.api.header.type}") String headerType, @Value("{hunter.api.header.value}") String headerValue) throws MalformedURLException {
 		this(new URL(endpoint), new HashMap<String, String>(){{put(headerType,headerValue);}});

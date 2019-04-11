@@ -4,8 +4,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.JsonObject;
 
@@ -15,12 +15,18 @@ import com.google.gson.JsonObject;
  * @since 10-Apr-2019
  *
  */
-@RestController
+@Controller
 public class CallBackController {
+
+	@RequestMapping("/")
+	public String homePage() {
+		return "login";
+	}
 
 	@RequestMapping("/callHunter")
 	public void callHunter() {
 		try {
+			System.out.println("Testing");
 			URL callHunterURL = new URL("https://api.staging.contaquanto.com/graphql");
 			Map<String, String> inputHeaders = new HashMap<>();
 			inputHeaders.put("Content-Type", "application/graphql");
