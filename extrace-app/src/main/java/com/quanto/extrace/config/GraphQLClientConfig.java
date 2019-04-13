@@ -25,11 +25,11 @@ public class GraphQLClientConfig {
 		try {
 			callHunterURL = new URL("https://api.staging.contaquanto.com/graphql");
 		} catch (MalformedURLException e) {
-			logger.error("Hunter's URL is invalid",e);
+			logger.error("your call back URL is invalid",e);
 		}
 		Map<String, String> inputHeaders = new HashMap<>();
-		inputHeaders.put("Content-Type", "application/graphql");
-		
+		//inputHeaders.put("Content-Type", "application/graphql");
+		inputHeaders.put("signature","C8EF9CEAF2AC5C5E_SHA512");
 		return new GraphQLClientHandling(callHunterURL,inputHeaders);
 	}
 	
