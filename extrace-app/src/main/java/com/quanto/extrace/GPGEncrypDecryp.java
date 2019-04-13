@@ -1,9 +1,11 @@
 package com.quanto.extrace;
 
+import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.Writer;
 import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.SecureRandom;
@@ -14,6 +16,15 @@ import java.util.Iterator;
 
 import org.bouncycastle.bcpg.ArmoredOutputStream;
 import org.bouncycastle.bcpg.BCPGOutputStream;
+import org.bouncycastle.crypto.BlockCipher;
+import org.bouncycastle.crypto.BufferedBlockCipher;
+import org.bouncycastle.crypto.DataLengthException;
+import org.bouncycastle.crypto.InvalidCipherTextException;
+import org.bouncycastle.crypto.engines.RijndaelEngine;
+import org.bouncycastle.crypto.modes.CBCBlockCipher;
+import org.bouncycastle.crypto.paddings.PaddedBufferedBlockCipher;
+import org.bouncycastle.crypto.paddings.ZeroBytePadding;
+import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.openpgp.PGPCompressedData;
 import org.bouncycastle.openpgp.PGPCompressedDataGenerator;
 import org.bouncycastle.openpgp.PGPEncryptedData;
@@ -34,19 +45,36 @@ import org.bouncycastle.openpgp.PGPSignatureSubpacketGenerator;
 import org.bouncycastle.openpgp.PGPUtil;
 import org.bouncycastle.openpgp.operator.jcajce.JcaPGPContentSignerBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import org.bouncycastle.util.encoders.Base64;
+
 /**
  * 
  * @author tarun
  * @since 10-Apr-2019
  */
-public class GPGEncrypDecryp {
+public class GPGEncrypDecryp extends BufferedWriter {
 
 	static final ClassLoader loader = GPGEncrypDecryp.class.getClassLoader();
-
 	/**
 	 * 
 	 * @param args
 	 */
+
+	private static final int LINE_LENGTH = 64;
+	private static char[] buf = new char[LINE_LENGTH];
+	private final int nlLength;
+
+	public GPGEncrypDecryp(Writer out) {
+		super(out);
+
+		String nl = System.getProperty("line.separator");
+		if (nl != null) {
+			nlLength = nl.length();
+		} else {
+			nlLength = 2;
+		}
+	}
+
 	public static void main(String[] args) {
 		// get some input
 		String message = "SomeString";
@@ -56,12 +84,12 @@ public class GPGEncrypDecryp {
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 
 		// hardcode our private key password **NOT A GOOD IDEA...duh**
-		String privateKeyPassword = "test@123";
+		String privateKeyPassword = "Dota@123";
 
 		PGPPublicKey pubKey = null;
 		// Load public key
 		try {
-			pubKey = readPublicKey(loader.getResourceAsStream("9F2B41233C5373FF4EDBD7DBC8EF9CEAF2AC5C5E_p.asc"));
+			pubKey = readPublicKey(loader.getResourceAsStream("DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc"));
 		} catch (IOException | PGPException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,7 +105,8 @@ public class GPGEncrypDecryp {
 		// Load private key, **NOTE: still secret, we haven't unlocked it yet**
 		PGPSecretKey pgpSec = null;
 		try {
-			pgpSec = readSecretKey(loader.getResourceAsStream("9F2B41233C5373FF4EDBD7DBC8EF9CEAF2AC5C5E_s.asc"));
+			pgpSec = readSecretKey(loader.getResourceAsStream("key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc"));
+			// writeEncoded();
 		} catch (IOException | PGPException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -115,6 +144,64 @@ public class GPGEncrypDecryp {
 
 	}
 
+	private static byte[] signMessageByteArrayConversion(String message, PGPSecretKey pgpSec, char pass[])
+			throws PGPException, IOException, SignatureException {
+		byte[] messageCharArray = message.getBytes();
+
+		ByteArrayOutputStream encOut = new ByteArrayOutputStream();
+		OutputStream out = encOut;
+		out = new ArmoredOutputStream(out);
+
+		// Unlock the private key using the password
+		PGPPrivateKey pgpPrivKey = pgpSec
+				.extractPrivateKey(new JcePBESecretKeyDecryptorBuilder().setProvider("BC").build(pass));
+
+		// Signature generator, we can generate the public key from the private
+		// key! Nifty!
+		PGPSignatureGenerator sGen = new PGPSignatureGenerator(
+				new JcaPGPContentSignerBuilder(pgpSec.getPublicKey().getAlgorithm(), PGPUtil.SHA512).setProvider("BC"));
+
+		sGen.init(PGPSignature.BINARY_DOCUMENT, pgpPrivKey);
+
+		Iterator it = pgpSec.getPublicKey().getUserIDs();
+		if (it.hasNext()) {
+			PGPSignatureSubpacketGenerator spGen = new PGPSignatureSubpacketGenerator();
+			spGen.setSignerUserID(false, (String) it.next());
+			sGen.setHashedSubpackets(spGen.generate());
+		}
+
+		PGPCompressedDataGenerator comData = new PGPCompressedDataGenerator(PGPCompressedData.ZLIB);
+
+		BCPGOutputStream bOut = new BCPGOutputStream(comData.open(out));
+
+		sGen.generateOnePassVersion(false).encode(bOut);
+
+		PGPLiteralDataGenerator lGen = new PGPLiteralDataGenerator();
+		OutputStream lOut = lGen.open(bOut, PGPLiteralData.BINARY, PGPLiteralData.CONSOLE, messageCharArray.length,
+				new Date());
+
+		for (byte c : messageCharArray) {
+			lOut.write(c);
+			sGen.update(c);
+		}
+
+		lOut.close();
+		/*
+		 * while ((ch = message.toCharArray().read()) >= 0) { lOut.write(ch);
+		 * sGen.update((byte) ch); }
+		 */
+		lGen.close();
+
+		sGen.generate().encode(bOut);
+
+		comData.close();
+
+		out.close();
+
+		return messageCharArray;
+
+	}
+
 	/**
 	 * @param message
 	 * @param pgpSec
@@ -142,7 +229,7 @@ public class GPGEncrypDecryp {
 		// Signature generator, we can generate the public key from the private
 		// key! Nifty!
 		PGPSignatureGenerator sGen = new PGPSignatureGenerator(
-				new JcaPGPContentSignerBuilder(pgpSec.getPublicKey().getAlgorithm(), PGPUtil.SHA1).setProvider("BC"));
+				new JcaPGPContentSignerBuilder(pgpSec.getPublicKey().getAlgorithm(), PGPUtil.SHA512).setProvider("BC"));
 
 		sGen.init(PGPSignature.BINARY_DOCUMENT, pgpPrivKey);
 
@@ -309,6 +396,25 @@ public class GPGEncrypDecryp {
 		}
 
 		throw new IllegalArgumentException("Can't find signing key in key ring.");
+	}
+
+	public String testEncryptRijndael(String value, String key)
+			throws DataLengthException, IllegalStateException, InvalidCipherTextException {
+		BlockCipher engine = new RijndaelEngine(256);
+		BufferedBlockCipher cipher = new PaddedBufferedBlockCipher(new CBCBlockCipher(engine), new ZeroBytePadding());
+
+		byte[] keyBytes = key.getBytes();
+		cipher.init(true, new KeyParameter(keyBytes));
+
+		byte[] input = value.getBytes();
+		byte[] cipherText = new byte[cipher.getOutputSize(input.length)];
+
+		int cipherLength = cipher.processBytes(input, 0, input.length, cipherText, 0);
+		cipher.doFinal(cipherText, cipherLength);
+
+		String result = new String(Base64.encode(cipherText));
+		// Log.e("testEncryptRijndael : " , result);
+		return result;
 	}
 
 }
