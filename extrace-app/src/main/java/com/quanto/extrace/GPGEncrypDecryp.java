@@ -75,9 +75,9 @@ public class GPGEncrypDecryp extends BufferedWriter {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws DataLengthException, IllegalStateException, InvalidCipherTextException {
 		// get some input
-		String message = "SomeString";
+		String message = "";
 		System.out.println("The input is : " + message);
 
 		// add Bouncy JCE Provider, http://bouncycastle.org/latest_releases.html
@@ -106,7 +106,7 @@ public class GPGEncrypDecryp extends BufferedWriter {
 		PGPSecretKey pgpSec = null;
 		try {
 			pgpSec = readSecretKey(loader.getResourceAsStream("key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc"));
-			// writeEncoded();
+
 		} catch (IOException | PGPException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -116,6 +116,7 @@ public class GPGEncrypDecryp extends BufferedWriter {
 		String messageSignature = null;
 		try {
 			messageSignature = signMessageByteArray(message, pgpSec, privateKeyPassword.toCharArray());
+			//testEncryptRijndael(messageSignature, privateKeyPassword.toString());
 		} catch (NoSuchAlgorithmException | NoSuchProviderException | SignatureException | IOException
 				| PGPException e) {
 			// TODO Auto-generated catch block
@@ -398,7 +399,7 @@ public class GPGEncrypDecryp extends BufferedWriter {
 		throw new IllegalArgumentException("Can't find signing key in key ring.");
 	}
 
-	public String testEncryptRijndael(String value, String key)
+	public static String testEncryptRijndael(String value, String key)
 			throws DataLengthException, IllegalStateException, InvalidCipherTextException {
 		BlockCipher engine = new RijndaelEngine(256);
 		BufferedBlockCipher cipher = new PaddedBufferedBlockCipher(new CBCBlockCipher(engine), new ZeroBytePadding());
