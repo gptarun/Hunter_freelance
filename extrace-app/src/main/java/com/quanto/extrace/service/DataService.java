@@ -23,7 +23,7 @@ public class DataService {
 	private GraphQLClientHandling graphQLClient;
 	
 	@Autowired
-	Customer customer;
+	private Customer customer;
 	
 	public Map<String,String> createSession(String callbackUrl) {
 		Map<String, String> sessionValues = new HashMap<>();
