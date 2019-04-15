@@ -56,7 +56,15 @@ public class GraphQLClientHandling {
 		this.endpoint = endpoint;
 		this.headers = headers;
 	}
-
+	/**
+	 * Updates the header of the object
+	 * @param key
+	 * @param value
+	 */
+	public void updateHeader(String key, String value) {
+		this.headers.put(key, value);
+	}
+	
 	/**
 	 * Executes the given query or mutation.
 	 * 
@@ -118,7 +126,7 @@ public class GraphQLClientHandling {
 
 		return mapper.apply(response.get("data").getAsJsonObject());
 	}
-
+	
 	private static String execute(String url, String jsonEntity, Map<String, String> headers) throws IOException {
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpPost httppost = new HttpPost(url);
@@ -146,3 +154,4 @@ public class GraphQLClientHandling {
 		return contentString;
 	}
 }
+                                                                                                 
