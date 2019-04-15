@@ -18,8 +18,6 @@ import org.bouncycastle.bcpg.ArmoredInputStream;
 import org.bouncycastle.bcpg.ArmoredOutputStream;
 import org.bouncycastle.bcpg.BCPGOutputStream;
 import org.bouncycastle.bcpg.HashAlgorithmTags;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPrivateKey;
 import org.bouncycastle.openpgp.PGPSecretKey;
@@ -31,7 +29,9 @@ import org.bouncycastle.openpgp.PGPUtil;
 import org.bouncycastle.openpgp.operator.bc.BcPGPContentSignerBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GpgSign {
 
 	private static final int BUFFER_SIZE = 4096;
@@ -40,7 +40,7 @@ public class GpgSign {
 	static final ClassLoader loader = GpgSign.class.getClassLoader();
 
 	// Copied Main to create signature
-	public Map createSignature() {
+	public Map<String, String> createSignature() {
 		String message = "{\"query\":\"query Me {  User_viewer {    me {        baseName    }   }}\",\"operationName\":\"Me\",\"_timestamp\":"
 				+ ZonedDateTime.now().toInstant().toEpochMilli() + ",\"_timeUniqueId\":\"myAmazingUniqueId\"}";
 		System.out.println("The input is : " + message);

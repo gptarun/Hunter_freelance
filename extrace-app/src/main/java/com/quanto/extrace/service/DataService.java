@@ -25,7 +25,10 @@ public class DataService {
 
 	@Autowired
 	private Customer customer;
-
+	
+	@Autowired
+	private GpgSign gpgSign;
+	
 	public Map<String, String> createSession(String callbackUrl) {
 		Map<String, String> sessionValues = new HashMap<>();
 		JsonObject variables = new JsonObject();
@@ -105,8 +108,8 @@ public class DataService {
 	}
 
 	public Map queryMe() {
-		GpgSign gpgSign = new GpgSign();
-		Map keySignature = gpgSign.createSignature();
+		Map<String , String> keySignature = gpgSign.createSignature();
+		graphQLClient.updateHeader("signature", keySignature.get("signature"));
 		/*
 		 * Need to create a loginc to fetch the { "data": { "User_viewer": { "me": {
 		 * "baseName": "Tarun Gupta" } } } }
