@@ -116,16 +116,22 @@ public class DataService {
 	}
 
 	public Map queryMe() {
+		Map reponseMap = new HashMap();
 		String query = "{\"query\":\"query Me {  User_viewer {    me {        baseName    }   }}\",\"operationName\":\"Me\",\"_timestamp\":"
 				+ ZonedDateTime.now().toInstant().toEpochMilli() + ",\"_timeUniqueId\":\"myAmazingUniqueId\"}";
-		JsonObject variables = new JsonObject();
+
 		headerUtil(query);
-		variables.addProperty("fingerPrint", fingerPrint);
 
 		try {
-			JsonObject data = graphQLClient.execute(query, variables, (JsonObject o) -> {
+			JsonObject data = graphQLClient.execute(query, (JsonObject o) -> {
 				return o;
 			});
+			reponseMap.put("baseName", data.get("basenName").toString());
+			System.out.println(data.get("basenName").toString());
+		} catch (Exception e) {
+			reponseMap.put("Error", "Some exception");
+			e.printStackTrace();
+		}
 		/*
 		 * Need to create a loginc to fetch the { "data": { "User_viewer": { "me": {
 		 * "baseName": "Tarun Gupta" } } } }
@@ -133,7 +139,6 @@ public class DataService {
 		 * base name and store it into the new MAP and Map should have key - "baseName"
 		 * value - "Tarun Gupta"
 		 */
-		Map reponseMap = null;
 
 		return reponseMap;
 

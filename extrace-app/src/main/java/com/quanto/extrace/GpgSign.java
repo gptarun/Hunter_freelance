@@ -82,13 +82,21 @@ public class GpgSign {
 
 			resultMap.put("asciiArmoredSignature", signature);
 			resultMap.put("hashingAlgo", hashAlgoToString(signatureAlgo));
-			resultMap.put("fingerPrint", bytesToHex(secKey.getPublicKey().getFingerprint()));
+			resultMap.put("fingerPrint", shortFingerprint(bytesToHex(secKey.getPublicKey().getFingerprint())));
 			// endregion
 		} catch (IOException | PGPException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return resultMap;
+	}
+
+	private static String shortFingerprint(String fingerprint) {
+		String shortFingerprint = "";
+		if(fingerprint != null && !fingerprint.isEmpty()) {
+			
+		}
+		return shortFingerprint;
 	}
 
 	static PGPSecretKey getSecretKey(String privateKeyData) throws IOException, PGPException {
