@@ -117,8 +117,14 @@ public class DataService {
 
 	public Map queryMe() {
 		Map reponseMap = new HashMap();
-		String query = "{\"query\":\"query Me {  User_viewer {    me {        baseName    }   }}\",\"operationName\":\"Me\",\"_timestamp\":"
-				+ ZonedDateTime.now().toInstant().toEpochMilli() + ",\"_timeUniqueId\":\"myAmazingUniqueId\"}";
+		/*
+		 * String query =
+		 * "{\"query\":\"query Me {  User_viewer {    me {        baseName    }   }}\",\"operationName\":\"Me\",\"_timestamp\":"
+		 * + ZonedDateTime.now().toInstant().toEpochMilli() +
+		 * ",\"_timeUniqueId\":\"myAmazingUniqueId\"}";
+		 */
+		String query = "query Me {\r\n" + "  User_viewer {\r\n" + "    me {\r\n" + "      baseName\r\n" + "    }\r\n"
+				+ "  }\r\n" + "}";
 
 		headerUtil(query);
 
@@ -150,6 +156,8 @@ public class DataService {
 
 		header = keySignature.get("fingerPrint") + "_" + keySignature.get("hashingAlgo") + "_"
 				+ keySignature.get("asciiArmoredSignature");
+
+		System.out.println(header);
 		graphQLClient.updateHeader("signature", header);
 	}
 

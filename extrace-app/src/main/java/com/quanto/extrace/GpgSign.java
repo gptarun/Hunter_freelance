@@ -80,7 +80,7 @@ public class GpgSign {
 			// region Sign Data
 			String signature = signArmoredAscii(privKey, data, signatureAlgo);
 
-			resultMap.put("asciiArmoredSignature", signature);
+			resultMap.put("asciiArmoredSignature", getBase64Payload(signature));
 			resultMap.put("hashingAlgo", hashAlgoToString(signatureAlgo));
 			resultMap.put("fingerPrint", shortFingerprint(bytesToHex(secKey.getPublicKey().getFingerprint())));
 			// endregion
@@ -91,10 +91,19 @@ public class GpgSign {
 		return resultMap;
 	}
 
+	private static String getBase64Payload(String signature) {
+		String shortSign = "";
+		shortSign = signature.replace("-----BEGIN PGP SIGNATURE-----", "").replace("-----END PGP SIGNATURE-----", "")
+				.replace("Version: BCPG v1.60", "").replaceAll("\r", "").replaceAll("\n", "");
+		return shortSign;
+	}
+
 	private static String shortFingerprint(String fingerprint) {
 		String shortFingerprint = "";
-		if(fingerprint != null && !fingerprint.isEmpty()) {
-			
+		if (fingerprint != null && !fingerprint.isEmpty()) {
+			shortFingerprint = fingerprint.substring(fingerprint.length() - 16, fingerprint.length());
+		} else {
+			System.out.println("Invalid fingerprint");
 		}
 		return shortFingerprint;
 	}
