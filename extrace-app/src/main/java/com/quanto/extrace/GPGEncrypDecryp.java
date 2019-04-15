@@ -75,7 +75,8 @@ public class GPGEncrypDecryp extends BufferedWriter {
 		}
 	}
 
-	public static void main(String[] args) throws DataLengthException, IllegalStateException, InvalidCipherTextException {
+	public static void main(String[] args)
+			throws DataLengthException, IllegalStateException, InvalidCipherTextException {
 		// get some input
 		String message = "";
 		System.out.println("The input is : " + message);
@@ -89,7 +90,7 @@ public class GPGEncrypDecryp extends BufferedWriter {
 		PGPPublicKey pubKey = null;
 		// Load public key
 		try {
-			pubKey = readPublicKey(loader.getResourceAsStream("DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc"));
+			pubKey = readPublicKey(loader.getResourceAsStream("DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D_p.asc"));
 		} catch (IOException | PGPException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -116,7 +117,7 @@ public class GPGEncrypDecryp extends BufferedWriter {
 		String messageSignature = null;
 		try {
 			messageSignature = signMessageByteArray(message, pgpSec, privateKeyPassword.toCharArray());
-			//testEncryptRijndael(messageSignature, privateKeyPassword.toString());
+			// testEncryptRijndael(messageSignature, privateKeyPassword.toString());
 		} catch (NoSuchAlgorithmException | NoSuchProviderException | SignatureException | IOException
 				| PGPException e) {
 			// TODO Auto-generated catch block
@@ -140,66 +141,8 @@ public class GPGEncrypDecryp extends BufferedWriter {
 
 		if (encryptedMessage != null) {
 			System.out.println("PGP Encrypted Message: ");
-			System.out.println(encryptedMessage);
+			//System.out.println(encryptedMessage);
 		}
-
-	}
-
-	private static byte[] signMessageByteArrayConversion(String message, PGPSecretKey pgpSec, char pass[])
-			throws PGPException, IOException, SignatureException {
-		byte[] messageCharArray = message.getBytes();
-
-		ByteArrayOutputStream encOut = new ByteArrayOutputStream();
-		OutputStream out = encOut;
-		out = new ArmoredOutputStream(out);
-
-		// Unlock the private key using the password
-		PGPPrivateKey pgpPrivKey = pgpSec
-				.extractPrivateKey(new JcePBESecretKeyDecryptorBuilder().setProvider("BC").build(pass));
-
-		// Signature generator, we can generate the public key from the private
-		// key! Nifty!
-		PGPSignatureGenerator sGen = new PGPSignatureGenerator(
-				new JcaPGPContentSignerBuilder(pgpSec.getPublicKey().getAlgorithm(), PGPUtil.SHA512).setProvider("BC"));
-
-		sGen.init(PGPSignature.BINARY_DOCUMENT, pgpPrivKey);
-
-		Iterator it = pgpSec.getPublicKey().getUserIDs();
-		if (it.hasNext()) {
-			PGPSignatureSubpacketGenerator spGen = new PGPSignatureSubpacketGenerator();
-			spGen.setSignerUserID(false, (String) it.next());
-			sGen.setHashedSubpackets(spGen.generate());
-		}
-
-		PGPCompressedDataGenerator comData = new PGPCompressedDataGenerator(PGPCompressedData.ZLIB);
-
-		BCPGOutputStream bOut = new BCPGOutputStream(comData.open(out));
-
-		sGen.generateOnePassVersion(false).encode(bOut);
-
-		PGPLiteralDataGenerator lGen = new PGPLiteralDataGenerator();
-		OutputStream lOut = lGen.open(bOut, PGPLiteralData.BINARY, PGPLiteralData.CONSOLE, messageCharArray.length,
-				new Date());
-
-		for (byte c : messageCharArray) {
-			lOut.write(c);
-			sGen.update(c);
-		}
-
-		lOut.close();
-		/*
-		 * while ((ch = message.toCharArray().read()) >= 0) { lOut.write(ch);
-		 * sGen.update((byte) ch); }
-		 */
-		lGen.close();
-
-		sGen.generate().encode(bOut);
-
-		comData.close();
-
-		out.close();
-
-		return messageCharArray;
 
 	}
 
@@ -248,7 +191,7 @@ public class GPGEncrypDecryp extends BufferedWriter {
 		sGen.generateOnePassVersion(false).encode(bOut);
 
 		PGPLiteralDataGenerator lGen = new PGPLiteralDataGenerator();
-		OutputStream lOut = lGen.open(bOut, PGPLiteralData.BINARY, PGPLiteralData.CONSOLE, messageCharArray.length,
+		OutputStream lOut = lGen.open(bOut, PGPLiteralData.UTF8, PGPLiteralData.CONSOLE, messageCharArray.length,
 				new Date());
 
 		for (byte c : messageCharArray) {
@@ -312,7 +255,7 @@ public class GPGEncrypDecryp extends BufferedWriter {
 		lData.close();
 		comData.close();
 
-		PGPEncryptedDataGenerator cPk = new PGPEncryptedDataGenerator(PGPEncryptedData.CAST5, withIntegrityCheck,
+		PGPEncryptedDataGenerator cPk = new PGPEncryptedDataGenerator(PGPEncryptedData.AES_256, withIntegrityCheck,
 				new SecureRandom(), "BC");
 
 		cPk.addMethod(encKey);
