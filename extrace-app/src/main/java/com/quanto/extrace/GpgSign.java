@@ -40,9 +40,8 @@ public class GpgSign {
 	static final ClassLoader loader = GpgSign.class.getClassLoader();
 
 	// Copied Main to create signature
-	public Map<String, String> createSignature() {
-		String message = "{\"query\":\"query Me {  User_viewer {    me {        baseName    }   }}\",\"operationName\":\"Me\",\"_timestamp\":"
-				+ ZonedDateTime.now().toInstant().toEpochMilli() + ",\"_timeUniqueId\":\"myAmazingUniqueId\"}";
+	public Map<String, String> createSignature(String message) {
+
 		System.out.println("The input is : " + message);
 
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());

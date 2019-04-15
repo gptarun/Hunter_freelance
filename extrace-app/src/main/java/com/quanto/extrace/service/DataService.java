@@ -1,8 +1,10 @@
 package com.quanto.extrace.service;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,16 +27,18 @@ public class DataService {
 
 	@Autowired
 	private Customer customer;
-	
+
 	@Autowired
 	private GpgSign gpgSign;
-	
+
 	public Map<String, String> createSession(String callbackUrl) {
 		Map<String, String> sessionValues = new HashMap<>();
 		JsonObject variables = new JsonObject();
 		String query = "mutation CreateSession {\r\n" + "  Hunter_CreateSession(\r\n" + "    input: {\r\n"
 				+ "      webhooks: {\r\n" + "        type: post,\r\n" + "        url: $url\r\n" + "      }\r\n"
 				+ "  }) {\r\n" + "    sessionId\r\n" + "    sessionUrl\r\n" + "  }\r\n" + "}";
+
+		headerUtil(query);
 
 		variables.addProperty("url", callbackUrl);
 
@@ -59,6 +63,8 @@ public class DataService {
 				+ "      accounts {\r\n" + "        routingType\r\n" + "        routingNumber\r\n"
 				+ "        branchNumber\r\n" + "        accountNumber\r\n" + "      }\r\n" + "    }\r\n" + "  }\r\n"
 				+ "}";
+
+		headerUtil(query);
 
 		variables.addProperty("fingerPrint", fingerPrint);
 
@@ -86,6 +92,8 @@ public class DataService {
 				+ "    isoDateTime\r\n" + "    timestamp\r\n" + "    type\r\n" + "    name\r\n"
 				+ "    documentNumber\r\n" + "    documentAmount\r\n" + "  }\r\n" + "}";
 
+		headerUtil(query);
+
 		variables.addProperty("routingType", customer.getRoutingType());
 		variables.addProperty("routingNumber", customer.getRoutingNumber());
 		variables.addProperty("branchNumber", customer.getBranchNumber());
@@ -108,21 +116,36 @@ public class DataService {
 	}
 
 	public Map queryMe() {
-		Map<String , String> keySignature = gpgSign.createSignature();
-		graphQLClient.updateHeader("signature", keySignature.get("signature"));
+		String query = "{\"query\":\"query Me {  User_viewer {    me {        baseName    }   }}\",\"operationName\":\"Me\",\"_timestamp\":"
+				+ ZonedDateTime.now().toInstant().toEpochMilli() + ",\"_timeUniqueId\":\"myAmazingUniqueId\"}";
+		JsonObject variables = new JsonObject();
+		headerUtil(query);
+		variables.addProperty("fingerPrint", fingerPrint);
+
+		try {
+			JsonObject data = graphQLClient.execute(query, variables, (JsonObject o) -> {
+				return o;
+			});
 		/*
 		 * Need to create a loginc to fetch the { "data": { "User_viewer": { "me": {
 		 * "baseName": "Tarun Gupta" } } } }
 		 * 
-		 * base name and store it into the new MAP and
-		 * Map should have 
-		 * key - "baseName"
+		 * base name and store it into the new MAP and Map should have key - "baseName"
 		 * value - "Tarun Gupta"
 		 */
 		Map reponseMap = null;
 
 		return reponseMap;
 
+	}
+
+	private void headerUtil(String headerFormat) {
+		String header = "";
+		Map<String, String> keySignature = gpgSign.createSignature(headerFormat);
+
+		header = keySignature.get("fingerPrint") + "_" + keySignature.get("hashingAlgo") + "_"
+				+ keySignature.get("asciiArmoredSignature");
+		graphQLClient.updateHeader("signature", header);
 	}
 
 }
