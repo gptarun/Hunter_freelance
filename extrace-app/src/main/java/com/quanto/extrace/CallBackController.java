@@ -24,7 +24,7 @@ public class CallBackController {
 
 	@Autowired
 	private DataService dataService;
-	
+
 	@RequestMapping("/")
 	public String homePage() {
 		return "login";
@@ -42,10 +42,12 @@ public class CallBackController {
 			 * Here we need to get session url from the client object of
 			 * GraphQLClientHandling https://staging.quanto.app/?hsession=
 			 */
-			//String sessionURL = "https://staging.quanto.app/?hsession=1b92a8ae-bab0-4dc7-a25b-5f65d8413b24"; // for now
-			//sessionValues.put("sessionId", "1233456789");
-			//sessionValues.put("sessionURL", sessionURL);
-			
+			// String sessionURL =
+			// "https://staging.quanto.app/?hsession=1b92a8ae-bab0-4dc7-a25b-5f65d8413b24";
+			// // for now
+			// sessionValues.put("sessionId", "1233456789");
+			// sessionValues.put("sessionURL", sessionURL);
+
 			variables = new JsonObject();
 			variables.addProperty("searchText", "test");
 
@@ -54,4 +56,17 @@ public class CallBackController {
 		}
 		return new ResponseEntity<>(sessionValues, HttpStatus.OK);
 	}
+
+	@RequestMapping(value = "/queryMe", method = RequestMethod.POST)
+	public ResponseEntity<Object> queryMe() {
+		Map response = null;
+		System.out.println("Inside the query me");
+		try {
+			response = dataService.queryMe();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
 }

@@ -7,10 +7,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.security.NoSuchAlgorithmException;
-import java.security.NoSuchProviderException;
 import java.security.Security;
-import java.security.SignatureException;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,11 +18,8 @@ import org.bouncycastle.bcpg.ArmoredInputStream;
 import org.bouncycastle.bcpg.ArmoredOutputStream;
 import org.bouncycastle.bcpg.BCPGOutputStream;
 import org.bouncycastle.bcpg.HashAlgorithmTags;
-import org.bouncycastle.crypto.DataLengthException;
-import org.bouncycastle.crypto.InvalidCipherTextException;
 import org.bouncycastle.openpgp.PGPException;
 import org.bouncycastle.openpgp.PGPPrivateKey;
-import org.bouncycastle.openpgp.PGPPublicKey;
 import org.bouncycastle.openpgp.PGPSecretKey;
 import org.bouncycastle.openpgp.PGPSecretKeyRing;
 import org.bouncycastle.openpgp.PGPSecretKeyRingCollection;
@@ -35,51 +29,46 @@ import org.bouncycastle.openpgp.PGPUtil;
 import org.bouncycastle.openpgp.operator.bc.BcPGPContentSignerBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
-import org.bouncycastle.util.encoders.Base64;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GpgSign {
 
 	private static final int BUFFER_SIZE = 4096;
 	private static int signatureAlgo = HashAlgorithmTags.SHA512;
 	private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 	static final ClassLoader loader = GpgSign.class.getClassLoader();
-	
-	public static void main(String[] args) throws DataLengthException, IllegalStateException, InvalidCipherTextException {
-		// get some input
-		String message = "{\"query\":\"query Me {  User_viewer {    me {        baseName    }   }}\",\"operationName\":\"Me\",\"_timestamp\":"+ZonedDateTime.now().toInstant().toEpochMilli()+",\"_timeUniqueId\":\"myAmazingUniqueId\"}";
+
+	// Copied Main to create signature
+	public Map<String, String> createSignature(String message) {
+
 		System.out.println("The input is : " + message);
 
-		// add Bouncy JCE Provider, http://bouncycastle.org/latest_releases.html
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 
-		// hardcode our private key password **NOT A GOOD IDEA...duh**
-		String privateKeyPassword = "test@123";
-		
-		String filePath = "src\\main\\resources\\key_9F2B41233C5373FF4EDBD7DBC8EF9CEAF2AC5C5E.asc";
-		 
-        System.out.println( readLineByLineJava8( filePath ) );
-		Map<String,String>	signatureMap = signData(readLineByLineJava8( filePath ),privateKeyPassword,message);
-		System.out.println("Helloo");
+		String privateKeyPassword = "Dota@123";
+
+		String filePath = "src\\main\\resources\\key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc";
+
+		readLineByLineJava8(filePath);
+		Map<String, String> signatureMap = signData(readLineByLineJava8(filePath), privateKeyPassword, message);
+		return signatureMap;
 	}
-	
-    //Read file content into string with - Files.lines(Path path, Charset cs)
- 
-    private static String readLineByLineJava8(String filePath)
-    {
-        StringBuilder contentBuilder = new StringBuilder();
- 
-        try (Stream<String> stream = Files.lines( Paths.get(filePath), StandardCharsets.UTF_8))
-        {
-            stream.forEach(s -> contentBuilder.append(s).append("\n"));
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
- 
-        return contentBuilder.toString();
-    }
-	
+
+	// Read file content into string with - Files.lines(Path path, Charset cs)
+
+	private static String readLineByLineJava8(String filePath) {
+		StringBuilder contentBuilder = new StringBuilder();
+
+		try (Stream<String> stream = Files.lines(Paths.get(filePath), StandardCharsets.UTF_8)) {
+			stream.forEach(s -> contentBuilder.append(s).append("\n"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return contentBuilder.toString();
+	}
+
 	public static Map<String, String> signData(final String privKeyData, final String password, final String data) {
 		// region Decode Private Key
 		Map<String, String> resultMap = new HashMap<>();
@@ -90,7 +79,7 @@ public class GpgSign {
 			// endregion
 			// region Sign Data
 			String signature = signArmoredAscii(privKey, data, signatureAlgo);
-			
+
 			resultMap.put("asciiArmoredSignature", signature);
 			resultMap.put("hashingAlgo", hashAlgoToString(signatureAlgo));
 			resultMap.put("fingerPrint", bytesToHex(secKey.getPublicKey().getFingerprint()));

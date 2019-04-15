@@ -12,6 +12,8 @@
 		<br>
 		<form align="center">
 			<input type="button" id = "Save" onclick="callHunterAPI();" value="Connect My Account">
+			
+			<input type="button" id = "Query" onclick="queryMe();" value="Query Me">
 		</form>
 		
 		<script>
@@ -26,6 +28,20 @@
 			        	console.log("POST API RESPONSE : " + data.sessionId);
 			        	console.log("URL: " + data.sessionURL);
 			        	$(location).attr("href",data.sessionURL);
+			        }, error: function (jqXHR, textStatus, errorThrown) {
+			        }
+				});
+			}
+			
+			function queryMe() {
+				$.ajax({
+			        url: "/queryMe",
+			        type: "POST",
+			        headers: {
+		                "Content-Type": "application/json"
+		            },
+			        success: function (data) {
+			        	console.log("URL: " + data.baseName);
 			        }, error: function (jqXHR, textStatus, errorThrown) {
 			        }
 				});
