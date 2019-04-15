@@ -65,6 +65,10 @@ public class GraphQLClientHandling {
 		this.headers.put(key, value);
 	}
 	
+	public void updateHeader(Map<String, String> header) {
+		this.headers = header;
+	}
+	
 	/**
 	 * Executes the given query or mutation.
 	 * 
