@@ -69,4 +69,27 @@ public class CallBackController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
+	public ResponseEntity<Object> webhookURL() {
+		System.out.println("Get the webhook url response");
+		return new ResponseEntity<>("Sucess", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/getUser", method = RequestMethod.POST)
+	public ResponseEntity<Object> getUser() {
+		System.out.println("Get the user data url response");
+		return new ResponseEntity<>("Sucess", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/getAccountDetails", method = RequestMethod.POST)
+	public ResponseEntity<Object> getAccountDetails() {
+		System.out.println("Get the account details url response");
+		return new ResponseEntity<>("Sucess", HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/getAccountStatement", method = RequestMethod.POST)
+	public ResponseEntity<Object> getAccountStatement() {
+		System.out.println("Get the account statement url response");
+		return new ResponseEntity<>("Sucess", HttpStatus.OK);
+	}
 }

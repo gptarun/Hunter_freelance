@@ -123,9 +123,8 @@ public class DataService {
 		 * + ZonedDateTime.now().toInstant().toEpochMilli() +
 		 * ",\"_timeUniqueId\":\"myAmazingUniqueId\"}";
 		 */
-		String query = "query Me {\r\n" + "  User_viewer {\r\n" + "    me {\r\n" + "      baseName\r\n" + "    }\r\n"
-				+ "  }\r\n" + "}";
-
+		String query = "{\"operationName\":\"Me\",\"variables\":{},\"query\":\"query Me {\\n  User_viewer {\\n    me {\\n      baseName\\n    }\\n  }\\n}\\n\",\"_timestamp\":"
+				+ ZonedDateTime.now().toInstant().toEpochMilli() + ",\"_timeUniqueId\":\"huebr\"}";
 		headerUtil(query);
 
 		try {
