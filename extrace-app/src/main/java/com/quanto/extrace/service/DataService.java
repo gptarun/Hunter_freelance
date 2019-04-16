@@ -35,16 +35,19 @@ public class DataService {
 		Map<String, String> sessionValues = new HashMap<>();
 		JsonObject variables = new JsonObject();
 		String query = "mutation CreateSession {\r\n" + "  Hunter_CreateSession(\r\n" + "    input: {\r\n"
-				+ "      webhooks: {\r\n" + "        type: post,\r\n" + "        url: $url\r\n" + "      }\r\n"
+				+ "      webhooks: {\r\n" + "        type: post,\r\n" + "        url: "+callbackUrl+"\r\n" + "      }\r\n"
 				+ "  }) {\r\n" + "    sessionId\r\n" + "    sessionUrl\r\n" + "  }\r\n" + "}";
 
-		headerUtil(query);
-
-		variables.addProperty("url", callbackUrl);
-
+		//variables.addProperty("$callbackUrl", callbackUrl);
+		
+		JsonObject body = createBody(query, variables , "1234");
+		System.out.println(body);
+		headerUtil(body.toString());
+		
 		try {
-			sessionValues = graphQLClient.execute(query, variables, (JsonObject o) -> {
+			sessionValues = graphQLClient.execute(body, (JsonObject o) -> {
 				Map<String, String> jsonMap = new HashMap<>();
+				System.out.println(o.toString());
 				jsonMap.put("sessionId", o.get("sessionId").toString());
 				jsonMap.put("sessionUrl", o.get("sessionUrl").toString());
 				return jsonMap;
@@ -64,12 +67,14 @@ public class DataService {
 				+ "        branchNumber\r\n" + "        accountNumber\r\n" + "      }\r\n" + "    }\r\n" + "  }\r\n"
 				+ "}";
 
-		headerUtil(query);
-
 		variables.addProperty("fingerPrint", fingerPrint);
-
+		
+		JsonObject body = createBody(query, variables , "1234");
+		
+		headerUtil(body.toString());
+		
 		try {
-			JsonObject data = graphQLClient.execute(query, variables, (JsonObject o) -> {
+			JsonObject data = graphQLClient.execute(body, (JsonObject o) -> {
 				return o;
 			});
 			customer.setRoutingType(data.get("sessionUrl").toString());
@@ -92,15 +97,17 @@ public class DataService {
 				+ "    isoDateTime\r\n" + "    timestamp\r\n" + "    type\r\n" + "    name\r\n"
 				+ "    documentNumber\r\n" + "    documentAmount\r\n" + "  }\r\n" + "}";
 
-		headerUtil(query);
-
 		variables.addProperty("routingType", customer.getRoutingType());
 		variables.addProperty("routingNumber", customer.getRoutingNumber());
 		variables.addProperty("branchNumber", customer.getBranchNumber());
 		variables.addProperty("accountNumber", customer.getAccountNumber());
+		
+		JsonObject body = createBody(query, variables , "1234");
+		
+		headerUtil(body.toString());
 
 		try {
-			JsonObject data = graphQLClient.execute(query, variables, (JsonObject o) -> {
+			JsonObject data = graphQLClient.execute(body, (JsonObject o) -> {
 				return o;
 			});
 			// customer.setRoutingType(data.get("sessionUrl").toString());
@@ -125,15 +132,18 @@ public class DataService {
 		 */
 		String query = "query Me {\r\n" + "  User_viewer {\r\n" + "    me {\r\n" + "      baseName\r\n" + "    }\r\n"
 				+ "  }\r\n" + "}";
-
-		headerUtil(query);
+		
+		JsonObject body = createBody(query, "queryMeTest");
+		headerUtil(body.toString());
 
 		try {
-			JsonObject data = graphQLClient.execute(query, (JsonObject o) -> {
+			JsonObject data = graphQLClient.execute(body, (JsonObject o) -> {
 				return o;
 			});
-			reponseMap.put("baseName", data.get("basenName").toString());
-			System.out.println(data.get("basenName").toString());
+			System.out.println(data.toString());
+			String baseName = data.getAsJsonObject("User_viewer").getAsJsonObject("me").get("baseName").toString();
+			reponseMap.put("baseName", baseName);
+			System.out.println(baseName.toString());
 		} catch (Exception e) {
 			reponseMap.put("Error", "Some exception");
 			e.printStackTrace();
@@ -153,12 +163,23 @@ public class DataService {
 	private void headerUtil(String headerFormat) {
 		String header = "";
 		Map<String, String> keySignature = gpgSign.createSignature(headerFormat);
-
 		header = keySignature.get("fingerPrint") + "_" + keySignature.get("hashingAlgo") + "_"
 				+ keySignature.get("asciiArmoredSignature");
-
 		System.out.println(header);
 		graphQLClient.updateHeader("signature", header);
 	}
-
+	
+	private JsonObject createBody(String query, String uniqueId) {
+		return createBody(query, new JsonObject() , uniqueId);
+	}
+	
+	private JsonObject createBody(String query, JsonObject variables ,  String uniqueId) {
+		JsonObject body = new JsonObject();
+		body.addProperty("query", query);
+		body.add("variables", variables);
+		body.addProperty("_timestamp", String.valueOf(ZonedDateTime.now().toInstant().toEpochMilli()));
+		body.addProperty("_timeUniqueId", uniqueId);
+		return body;
+	}
+	
 }

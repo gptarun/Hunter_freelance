@@ -28,7 +28,7 @@ public class GraphQLClientConfig {
 			logger.error("your call back URL is invalid",e);
 		}
 		Map<String, String> inputHeaders = new HashMap<>();
-		inputHeaders.put("Content-Type", "application/graphql");
+		//inputHeaders.put("Content-Type", "application/graphql");
 		inputHeaders.put("signature","27E1F7EC3119CE6D_SHA512_");
 		return new GraphQLClientHandling(callHunterURL,inputHeaders);
 	}

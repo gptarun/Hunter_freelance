@@ -2,8 +2,8 @@ package com.quanto.extrace;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
@@ -16,8 +16,6 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -86,7 +84,7 @@ public class GraphQLClientHandling {
 	 *             Thrown in case of errors set in the response body.
 	 */
 	public <T> T execute(String query, Function<JsonObject, T> mapper) throws IOException, GraphQLException {
-		return execute(query, new JsonObject(), mapper);
+		return execute(query, new JsonObject(), String.valueOf(ZonedDateTime.now().toInstant().toEpochMilli()) , "1234", mapper);
 	}
 
 	/**
@@ -107,12 +105,33 @@ public class GraphQLClientHandling {
 	 * @throws GraphQLException
 	 *             Thrown in case of errors set in the response body.
 	 */
-	public <T> T execute(String query, JsonObject variables, Function<JsonObject, T> mapper)
+	public <T> T execute(String query, JsonObject variables, String timeStamp, String uniqueId, Function<JsonObject, T> mapper)
 			throws IOException, GraphQLException {
 		JsonObject body = new JsonObject();
 		body.addProperty("query", query);
 		body.add("variables", variables);
+		body.addProperty("_timestamp", timeStamp);
+		body.addProperty("_timeUniqueId", uniqueId);
+		String responseString = execute(endpoint.toString(), body.toString(), headers);
 
+		JsonObject response = (JsonObject) (new JsonParser()).parse(responseString);
+
+		if (response.has("error")) {
+			throw new GraphQLException(response.get("error").getAsString());
+		}
+		if (response.has("errors")) {
+			String message = "";
+			for (JsonElement error : response.get("errors").getAsJsonArray()) {
+				message += error.toString();
+			}
+			throw new GraphQLException(message);
+		}
+
+		return mapper.apply(response.get("data").getAsJsonObject());
+	}
+	
+	public <T> T execute(JsonObject body, Function<JsonObject, T> mapper)
+			throws IOException, GraphQLException {
 		String responseString = execute(endpoint.toString(), body.toString(), headers);
 
 		JsonObject response = (JsonObject) (new JsonParser()).parse(responseString);
