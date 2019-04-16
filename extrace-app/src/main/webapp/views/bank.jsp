@@ -4,15 +4,60 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>User Details</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
-	<h1 align="center">Welcome to Hunter Login Page</h1>
-	<form align="center" action="" onsubmit="redirect(this);">
-		Branch:   <input type="text" name="branch" value="Branch"> <br><br>
-		Account:  <input type="text" name="account" value="Account"> <br><br>
-		Password: <input type="password" name="password"> <br><br>
-		<br> <input type="submit" value="Connect My Account">
-	</form>
+	<h1 align="center">Welcome to User's Page</h1>
+	<form align="center">
+			<input type="button" id = "user" onclick="getUserData();" value="User Data">
+			
+			<input type="button" id = "account" onclick="getAccountDetails();" value="Account Details">
+			
+			<input type="button" id = "statement" onclick="getAccountStatement();" value="Account Statement">
+		</form>
+		<script>
+			function getUserData() {
+				$.ajax({
+			        url: "/getUser",
+			        type: "POST",
+			        headers: {
+		                "Content-Type": "application/json"
+		            },
+			        success: function (data) {
+			        	console.log(data);
+			        }, error: function (jqXHR, textStatus, errorThrown) {
+			        }
+				});
+			}
+			
+			function getAccountDetails() {
+				$.ajax({
+			        url: "/getAccountDetails",
+			        type: "POST",
+			        headers: {
+		                "Content-Type": "application/json"
+		            },
+			        success: function (data) {
+			        	console.log(data);
+			        }, error: function (jqXHR, textStatus, errorThrown) {
+			        }
+				});
+			}
+			
+			function getAccountStatement() {
+				$.ajax({
+			        url: "/getAccountStatement",
+			        type: "POST",
+			        headers: {
+		                "Content-Type": "application/json"
+		            },
+			        success: function (data) {
+			        	console.log(data);
+			        }, error: function (jqXHR, textStatus, errorThrown) {
+			        }
+				});
+			}
+		</script>
 </body>
 </html>
