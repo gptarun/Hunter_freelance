@@ -48,7 +48,7 @@ public class DataService {
 				Map<String, String> jsonMap = new HashMap<>();
 				System.out.println(o.toString());
 				jsonMap.put("sessionId", o.getAsJsonObject("Hunter_CreateSession").get("sessionId").toString());
-				jsonMap.put("sessionUrl", o.getAsJsonObject("Hunter_CreateSession").get("sessionUrl").toString());
+				jsonMap.put("sessionUrl", o.getAsJsonObject("Hunter_CreateSession").get("sessionUrl").toString().replaceAll("^\"", "").replaceAll("\"$", ""));
 				return jsonMap;
 			});
 		} catch (GraphQLException e) {
