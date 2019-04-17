@@ -26,8 +26,9 @@
 		            },
 			        success: function (data) {
 			        	console.log("POST API RESPONSE : " + data.sessionId);
-			        	console.log("URL: " + data.sessionURL);
-			        	$(location).attr("href",data.sessionURL);
+			        	console.log("URL: " + data.sessionUrl);
+			        	location.reload(true);
+			        	window.location.href = data.sessionUrl;
 			        }, error: function (jqXHR, textStatus, errorThrown) {
 			        }
 				});

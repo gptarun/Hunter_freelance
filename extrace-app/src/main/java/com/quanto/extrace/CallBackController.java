@@ -36,7 +36,7 @@ public class CallBackController {
 		Map<String, String> sessionValues = null;
 		try {
 			System.out.println("Testing");
-			sessionValues = dataService.createSession("YOUR_CALLBACK_URL");
+			sessionValues = dataService.createSession("https://fi.tech/hunter");
 
 			/*
 			 * Here we need to get session url from the client object of
