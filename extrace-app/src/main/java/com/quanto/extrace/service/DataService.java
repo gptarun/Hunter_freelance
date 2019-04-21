@@ -108,11 +108,7 @@ public class DataService {
 		try {
 			JsonObject data = graphQLClient.execute(body, (JsonObject o) -> {
 				return o;
-			});
-			// customer.setRoutingType(data.get("sessionUrl").toString());
-			// customer.setRoutingNumber(data.get("sessionUrl").toString());
-			// customer.setBranchNumber(data.get("sessionUrl").toString());
-			// customer.setRoutingType(data.get("sessionUrl").toString());
+			});			
 		} catch (GraphQLException e) {
 			logger.error("Cannot create the hunter session", e);
 		} catch (IOException e) {
@@ -122,13 +118,7 @@ public class DataService {
 	}
 
 	public Map queryMe() {
-		Map reponseMap = new HashMap();
-		/*
-		 * String query =
-		 * "{\"query\":\"query Me {  User_viewer {    me {        baseName    }   }}\",\"operationName\":\"Me\",\"_timestamp\":"
-		 * + ZonedDateTime.now().toInstant().toEpochMilli() +
-		 * ",\"_timeUniqueId\":\"myAmazingUniqueId\"}";
-		 */
+		Map reponseMap = new HashMap();		
 		String query = "query Me {\r\n" + "  User_viewer {\r\n" + "    me {\r\n" + "      baseName\r\n" + "    }\r\n"
 				+ "  }\r\n" + "}";
 
@@ -146,15 +136,7 @@ public class DataService {
 		} catch (Exception e) {
 			reponseMap.put("Error", "Some exception");
 			e.printStackTrace();
-		}
-		/*
-		 * Need to create a loginc to fetch the { "data": { "User_viewer": { "me": {
-		 * "baseName": "Tarun Gupta" } } } }
-		 * 
-		 * base name and store it into the new MAP and Map should have key - "baseName"
-		 * value - "Tarun Gupta"
-		 */
-
+		}		
 		return reponseMap;
 
 	}
@@ -177,7 +159,7 @@ public class DataService {
 		body.addProperty("operationName", operationName);
 		body.addProperty("query", query);
 		body.add("variables", variables);
-		body.addProperty("_timestamp", ZonedDateTime.now().toInstant().toEpochMilli());
+		body.addProperty("_timestamp", ZonedDateTime.now().toInstant().toEpochMilli() + 14000);
 		// body.addProperty("_timestamp", new Date().getTime());
 		body.addProperty("_timeUniqueId", uniqueId + "" + ZonedDateTime.now().toInstant().toEpochMilli());
 		return body;

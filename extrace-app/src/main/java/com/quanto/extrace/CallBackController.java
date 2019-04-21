@@ -36,18 +36,7 @@ public class CallBackController {
 		Map<String, String> sessionValues = null;
 		try {
 			System.out.println("Testing");
-			sessionValues = dataService.createSession("https://fi.tech/hunter");
-
-			/*
-			 * Here we need to get session url from the client object of
-			 * GraphQLClientHandling https://staging.quanto.app/?hsession=
-			 */
-			// String sessionURL =
-			// "https://staging.quanto.app/?hsession=1b92a8ae-bab0-4dc7-a25b-5f65d8413b24";
-			// // for now
-			// sessionValues.put("sessionId", "1233456789");
-			// sessionValues.put("sessionURL", sessionURL);
-
+			sessionValues = dataService.createSession("https://52946d5c.ngrok.io/webhook");			
 			variables = new JsonObject();
 			variables.addProperty("searchText", "test");
 

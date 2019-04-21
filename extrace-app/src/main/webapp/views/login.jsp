@@ -25,10 +25,7 @@
 		                "Content-Type": "application/json"
 		            },
 			        success: function (data) {
-			        	console.log("POST API RESPONSE : " + data.sessionId);
-			        	console.log("URL: " + data.sessionUrl);
-			        	location.reload(true);
-			        	window.location.href = data.sessionUrl;
+			        	window.location.href = data.sessionUrl;			        
 			        }, error: function (jqXHR, textStatus, errorThrown) {
 			        }
 				});
