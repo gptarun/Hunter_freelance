@@ -11,9 +11,11 @@
 		<h1 align="center">Please enter bank account info</h1>
 		<br>
 		<form align="center">
-			<input type="button" id = "Save" onclick="callHunterAPI();" value="Connect My Account">
+			Hunter   :<input type="button" id = "Save" onclick="callHunterAPI();" value="Connect with Hunter"><br><br>
 			
-			<input type="button" id = "Query" onclick="queryMe();" value="Query Me">
+			Testing  :<input type="button" id = "Query" onclick="queryMe();" value="Query Me"><br><br>
+			
+			Instantor:<input type="button" id = "Query" onclick="callInstantor();" value="Connect with Instantor">
 		</form>
 		
 		<script>
@@ -40,6 +42,20 @@
 		            },
 			        success: function (data) {
 			        	console.log("URL: " + data.baseName);
+			        }, error: function (jqXHR, textStatus, errorThrown) {
+			        }
+				});
+			}
+			
+			function callInstantor() {
+				$.ajax({
+			        url: "/callInstantor",
+			        type: "POST",
+			        headers: {
+		                "Content-Type": "application/json"
+		            },
+			        success: function (data) {
+			        	console.log("Response : " + data);
 			        }, error: function (jqXHR, textStatus, errorThrown) {
 			        }
 				});

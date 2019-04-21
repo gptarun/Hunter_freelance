@@ -36,7 +36,7 @@ public class CallBackController {
 		Map<String, String> sessionValues = null;
 		try {
 			System.out.println("Testing");
-			sessionValues = dataService.createSession("https://52946d5c.ngrok.io/webhook");			
+			sessionValues = dataService.createSession("https://52946d5c.ngrok.io/webhook");
 			variables = new JsonObject();
 			variables.addProperty("searchText", "test");
 
@@ -58,6 +58,9 @@ public class CallBackController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
+	/**
+	 * This request will be called by the Third party API
+	 */
 	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
 	public ResponseEntity<Object> webhookURL() {
 		System.out.println("Get the webhook url response");
@@ -80,5 +83,13 @@ public class CallBackController {
 	public ResponseEntity<Object> getAccountStatement() {
 		System.out.println("Get the account statement url response");
 		return new ResponseEntity<>("Sucess", HttpStatus.OK);
+	}
+
+	/**
+	 * To call the Instantor API
+	 */
+	@RequestMapping(value = "/callInstantor", method = RequestMethod.POST)
+	public ResponseEntity<Object> callInstantor() {
+		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
 }
