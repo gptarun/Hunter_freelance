@@ -59,7 +59,7 @@ public class DataService {
 		return sessionValues;
 	}
 
-	public void getCustomerData(String fingerPrint) {
+	public void setCustomerData(String fingerPrint) {
 		JsonObject variables = new JsonObject();
 		String query = "query User {\r\n" + "  User_viewer {\r\n" + "    user(fingerPrint: $fingerPrint) {\r\n"
 				+ "      accounts {\r\n" + "        routingType\r\n" + "        routingNumber\r\n"
@@ -88,8 +88,11 @@ public class DataService {
 
 	}
 
-	public void getCustomerStatement(String fingerPrint) {
+	public JsonObject getCustomerStatement(String fingerPrint) {
 		JsonObject variables = new JsonObject();
+		JsonObject data = null;
+		setCustomerData(fingerPrint);
+		
 		String query = "query GetAccountStatement {\r\n" + "  Bank_GetAccountStatement(\r\n"
 				+ "    routingType: $routingType, \r\n" + "    routingNumber: $routingNumber,\r\n"
 				+ "    branchNumber: $branchNumber,\r\n" + "    accountNumber: $accountNumber\r\n" + "  ) {\r\n"
@@ -106,7 +109,7 @@ public class DataService {
 		headerUtil(body.toString());
 
 		try {
-			JsonObject data = graphQLClient.execute(body, (JsonObject o) -> {
+			data = graphQLClient.execute(body, (JsonObject o) -> {
 				return o;
 			});			
 		} catch (GraphQLException e) {
@@ -114,7 +117,7 @@ public class DataService {
 		} catch (IOException e) {
 			logger.error("Cannot create the hunter session", e);
 		}
-
+		return data;
 	}
 
 	public Map queryMe() {

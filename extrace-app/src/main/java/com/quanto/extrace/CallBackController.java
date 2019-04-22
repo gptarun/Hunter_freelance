@@ -1,12 +1,13 @@
 package com.quanto.extrace;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -45,7 +46,16 @@ public class CallBackController {
 		}
 		return new ResponseEntity<>(sessionValues, HttpStatus.OK);
 	}
-
+	
+	@RequestMapping(value = "/webHookHunter", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String handleResponse(@RequestBody JsonObject response) {
+        System.out.println("Hunter's response : " + response);
+        String fingerPrint = response.get("fingerPrint").toString();
+        JsonObject customerStatement = dataService.getCustomerStatement(fingerPrint);
+        //store the data to JSON file
+        return "";
+    }
+	
 	@RequestMapping(value = "/queryMe", method = RequestMethod.POST)
 	public ResponseEntity<Object> queryMe() {
 		Map response = null;
