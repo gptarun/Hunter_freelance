@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -67,15 +68,16 @@ public class CallBackController {
 	 * @throws NumberFormatException 
 	 */
 	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST)
-	public ResponseEntity<Object> webhookURL(@RequestBody InstantorParams instantorParams)
+	public ResponseEntity<Object> webhookURL(@RequestBody JsonObject requestBody)
 			throws NumberFormatException, InstantorException {
 		
+		System.out.println("Testing");
 		//trying to fetch the body using instantor api
-		
+		/*
 		InstantorParams reponse = InstantorParams.loadRequestParams(instantorParams.iS.getParamName(),
 				instantorParams.iE.getParamName(), instantorParams.iM.getParamName(), instantorParams.iA.getParamName(),
 				instantorParams.iP.getParamName(), Long.parseLong(instantorParams.iT.getParamName()));
-		System.out.println("Get the webhook url response");
+		System.out.println("Get the webhook url response");*/
 		return new ResponseEntity<>("Sucess", HttpStatus.OK);
 	}
 
