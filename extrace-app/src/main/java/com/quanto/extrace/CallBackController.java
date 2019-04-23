@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.gson.JsonObject;
+import com.instantor.api.InstantorException;
+import com.instantor.api.InstantorParams;
 import com.quanto.extrace.service.DataService;
 
 /**
@@ -46,16 +48,40 @@ public class CallBackController {
 		}
 		return new ResponseEntity<>(sessionValues, HttpStatus.OK);
 	}
-	
-	@RequestMapping(value = "/webHookHunter", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public String handleResponse(@RequestBody JsonObject response) {
-        System.out.println("Hunter's response : " + response);
-        String fingerPrint = response.get("fingerPrint").toString();
-        JsonObject customerStatement = dataService.getCustomerStatement(fingerPrint);
-        //store the data to JSON file
-        return "";
-    }
-	
+
+	/**
+	 * This request will be called by the Hunters API
+	 */
+	@RequestMapping(value = "/webHookHunter", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public String handleResponse(@RequestBody JsonObject response) {
+		System.out.println("Hunter's response : " + response);
+		String fingerPrint = response.get("fingerPrint").toString();
+		JsonObject customerStatement = dataService.getCustomerStatement(fingerPrint);
+		// store the data to JSON file
+		return "";
+	}
+
+	/**
+	 * This request will be called by the Instantor API
+	 * @throws InstantorException 
+	 * @throws NumberFormatException 
+	 */
+	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST)
+	public ResponseEntity<Object> webhookURL(@RequestBody InstantorParams instantorParams)
+			throws NumberFormatException, InstantorException {
+		
+		//trying to fetch the body using instantor api
+		
+		InstantorParams reponse = InstantorParams.loadRequestParams(instantorParams.iS.getParamName(),
+				instantorParams.iE.getParamName(), instantorParams.iM.getParamName(), instantorParams.iA.getParamName(),
+				instantorParams.iP.getParamName(), Long.parseLong(instantorParams.iT.getParamName()));
+		System.out.println("Get the webhook url response");
+		return new ResponseEntity<>("Sucess", HttpStatus.OK);
+	}
+
+	/**
+	 * To test our code is able to call Hunter's API or not
+	 */
 	@RequestMapping(value = "/queryMe", method = RequestMethod.POST)
 	public ResponseEntity<Object> queryMe() {
 		Map response = null;
@@ -66,15 +92,6 @@ public class CallBackController {
 			e.printStackTrace();
 		}
 		return new ResponseEntity<>(response, HttpStatus.OK);
-	}
-
-	/**
-	 * This request will be called by the Third party API
-	 */
-	@RequestMapping(value = "/webhook", method = RequestMethod.POST)
-	public ResponseEntity<Object> webhookURL() {
-		System.out.println("Get the webhook url response");
-		return new ResponseEntity<>("Sucess", HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/getUser", method = RequestMethod.POST)
@@ -95,11 +112,4 @@ public class CallBackController {
 		return new ResponseEntity<>("Sucess", HttpStatus.OK);
 	}
 
-	/**
-	 * To call the Instantor API
-	 */
-	@RequestMapping(value = "/callInstantor", method = RequestMethod.POST)
-	public ResponseEntity<Object> callInstantor() {
-		return new ResponseEntity<>("Success", HttpStatus.OK);
-	}
 }
