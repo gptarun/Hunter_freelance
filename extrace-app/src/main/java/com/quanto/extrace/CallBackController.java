@@ -78,7 +78,7 @@ public class CallBackController {
 	 * @throws InstantorException
 	 * @throws NumberFormatException
 	 */
-	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST)
+	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> webhookURL(@RequestBody String responseInstantor) throws InstantorException {
 
 		System.out.println("Testing");
