@@ -1,5 +1,9 @@
 package com.quanto.extrace.service;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -8,6 +12,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonObject;
@@ -30,6 +35,9 @@ public class DataService {
 	@Autowired
 	private GpgSign gpgSign;
 
+	@Value("${output.data.dir}")
+	private String outputDirectory;
+	
 	public Map<String, String> createSession(String callbackUrl) {
 		Map<String, String> sessionValues = new HashMap<>();
 		JsonObject variables = new JsonObject();
@@ -166,6 +174,15 @@ public class DataService {
 		// body.addProperty("_timestamp", new Date().getTime());
 		body.addProperty("_timeUniqueId", uniqueId + "" + ZonedDateTime.now().toInstant().toEpochMilli());
 		return body;
+	}
+	
+	public void writeDataInFile(String data, String fileName) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(outputDirectory + "/" + fileName)))) {
+		    bw.write(data);
+		    bw.close();
+		    } catch (IOException e) {
+		    	throw new RuntimeException("cannot write data to file",e);
+			}
 	}
 
 }
