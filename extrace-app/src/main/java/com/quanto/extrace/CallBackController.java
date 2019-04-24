@@ -116,6 +116,7 @@ public class CallBackController {
 		
 		String fileName = bankName + "_" + accountNumber + "_statement.json";
 		dataService.writeDataInFile(decryptedPayload, fileName);
+		System.out.println("Data successfully stored in "+fileName+" file");
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
 
