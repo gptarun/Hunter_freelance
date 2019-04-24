@@ -15,8 +15,6 @@
     Hunter :<input type="button" id="Save" onclick="callHunterAPI();" value="Connect with Hunter"></input><br><br>
 
     Testing :<input type="button" id="Query" onclick="queryMe();" value="Query Me"></input><br><br>
-    Instantor Webhook Call :<input type="button" id="webhook" onclick="webhookInstantor();" value="Webhook"></input><br><br>
-
 
     <div id="itor">
         Instantor:<input type="button" id="load" value="Connect with Instantor"><br><br>
@@ -29,7 +27,7 @@
             var itor = new Instantor('acordo-certo-74e83a42-c174-4d07-ba28-1c164b1fd3f6.br');
             itor.load('#itor');
 
-        });     
+        });
         //]]>
 
 
@@ -59,21 +57,7 @@
                 }, error: function (jqXHR, textStatus, errorThrown) {
                 }
             });
-        }
-
-        function webhookInstantor() {
-            $.ajax({
-                url: "/webhookInstantor",
-                type: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                success: function (data) {
-                    console.log("Response : " + data);
-                }, error: function (jqXHR, textStatus, errorThrown) {
-                }
-            });
-        }                    
+        }             
     </script>
 </body>
 
