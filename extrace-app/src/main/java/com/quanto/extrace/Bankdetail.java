@@ -31,7 +31,7 @@ public class Bankdetail {
 			Object fileObject = jsonParser.parse(reader);
 			System.out.println(fileObject.toString());
 			byte[] bankDetails = fileObject.toString().getBytes("UTF-8");;
-			System.out.println(bankDetails);
+			System.out.println(new String(bankDetails));
 			byte[] encryptedDetails = InstantorEncryption.B64_MD5_AES_CBC_PKCS5
 					.encrypt(new InstantorAPIKey(apiKeyValue), new InstantorMsgId(msgid), bankDetails);
 
