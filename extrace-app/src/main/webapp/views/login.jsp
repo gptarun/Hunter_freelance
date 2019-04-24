@@ -4,63 +4,31 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Extrace</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.instantor.com.br/frame-loader/instantor-0.7.3.min.js"></script>
+
 </head>
 
 <body>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.instantor.com.br/frame-loader/instantor-0.7.3.min.js"></script>
     <h1>Please enter bank account info</h1>
     <br>
     Hunter :<input type="button" id="Save" onclick="callHunterAPI();" value="Connect with Hunter"></input><br><br>
 
     Testing :<input type="button" id="Query" onclick="queryMe();" value="Query Me"></input><br><br>
-    Instantor: <input type="button" id="load" value="Connect with Instantor"></input><br><br>
-    <iframe id="itor" width="400" height="150"></iframe>
 
+
+    <div id="itor">
+        Instantor:<input type="button" id="load" value="Connect with Instantor"><br><br>
+        <iframe width="400" height="150"></iframe>
+    </div>
     <script>
 
         //<![CDATA[
-        $(function () {
-            try {
+        $("#load").click(function () {
+            var itor = new Instantor('acordo-certo-74e83a42-c174-4d07-ba28-1c164b1fd3f6.br');
+            itor.load('#itor');
 
-                /* Enter API name Instantor has provided to you */
-                var itor = new Instantor('company.inc');
-
-                /* Optionally, enter relevant process details */
-
-                /* Parameter 'environment' is used to controll endpoint for delivering data. Default is 'prod'. */
-                itor.userParam('environment', 'test');
-
-                /* 'uniqueID' is an example of parameter that could be used to link specific request made by an end user to a set of data provided by Instantor. */
-                /* Parameter and value are returned in the reports. */
-                itor.userParam('uniqueID', '69017b4d-6869-48d5-a029-f21042a69e35');
-
-                /* Initiate the Instantor iframe at the targeted DOM element */
-                itor.load('#itor');
-
-                /* Optional function to process the feedback messages */
-                itor.listener(function (response) {
-                    switch (response) {
-                        case 'process-finished':
-                            /* Process finished successfully. */
-                            break;
-                        case 'process-error':
-                            /* Process encountered an error. */
-                            break;
-                        case 'invalid-login':
-                            /* User did not provide correct login credentials. */
-                            break;
-                        case 'too-many-retries':
-                            /* User failed to login too many times, and should not repeat the process
-                               again for 24 hours in order to prevent a net-banking lock. */
-                            break;
-                        default:
-                            /* Process encountered an error. */
-                            break;
-                    }
-                });
-            } catch (err) { }
-        });
+        });     
         //]]>
 
 
