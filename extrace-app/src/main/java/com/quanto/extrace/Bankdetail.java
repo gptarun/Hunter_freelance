@@ -29,13 +29,15 @@ public class Bankdetail {
 
 		try (FileReader reader = new FileReader(instantorFilpath)) {
 			Object fileObject = jsonParser.parse(reader);
-
+			System.out.println(fileObject.toString());
 			byte[] bankDetails = fileObject.toString().getBytes("UTF-8");;
 			System.out.println(bankDetails);
 			byte[] encryptedDetails = InstantorEncryption.B64_MD5_AES_CBC_PKCS5
 					.encrypt(new InstantorAPIKey(apiKeyValue), new InstantorMsgId(msgid), bankDetails);
 
-			System.out.println(encryptedDetails);
+			String s = new String(encryptedDetails);
+			
+			System.out.println(s);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

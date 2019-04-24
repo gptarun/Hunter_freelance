@@ -15,6 +15,7 @@
     Hunter :<input type="button" id="Save" onclick="callHunterAPI();" value="Connect with Hunter"></input><br><br>
 
     Testing :<input type="button" id="Query" onclick="queryMe();" value="Query Me"></input><br><br>
+    Instantor Webhook Call :<input type="button" id="webhook" onclick="webhookInstantor();" value="Webhook"></input><br><br>
 
 
     <div id="itor">
@@ -60,9 +61,9 @@
             });
         }
 
-        function callInstantor() {
+        function webhookInstantor() {
             $.ajax({
-                url: "/callInstantor",
+                url: "/webhookInstantor",
                 type: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -72,7 +73,7 @@
                 }, error: function (jqXHR, textStatus, errorThrown) {
                 }
             });
-        }
+        }                    
     </script>
 </body>
 
