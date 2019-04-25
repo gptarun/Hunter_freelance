@@ -4,7 +4,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Extrace</title>
-
 </head>
 
 <body>
@@ -35,7 +34,7 @@
 
         function callHunterAPI() {
             $.ajax({
-                url: "/callHunter",
+                url: "/extrace-app/callHunter",
                 type: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -49,7 +48,7 @@
 
         function queryMe() {
             $.ajax({
-                url: "/queryMe",
+                url: "/extrace-app/queryMe",
                 type: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -63,7 +62,7 @@
 
         function webhookInstantor() {
             $.ajax({
-                url: "/webhookInstantor",
+                url: "/extrace-app/webhookInstantor",
                 type: "POST",
                 headers: {
                     "Content-Type": "application/json"

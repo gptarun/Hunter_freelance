@@ -118,7 +118,12 @@
 			<artifactId>instantor-api</artifactId>
 			<version>0.4.5</version>
 		</dependency>
-
+		
+		<dependency>
+		   <groupId>org.springframework.boot</groupId>
+		   <artifactId>spring-boot-starter-tomcat</artifactId>
+		   <scope>provided</scope>
+		</dependency>
 		<!-- <dependency>
 			<groupId>com.quanto</groupId>
 			<artifactId>instantor-api</artifactId>
@@ -128,6 +133,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>extrace-app</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
