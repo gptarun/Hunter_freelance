@@ -97,7 +97,7 @@ public class CallBackController {
 		System.out.println(responseInstantor);
 		Map<String, String> responseMap = new HashMap<>();
 		for (String param : responseParams) {
-			String[] paramArr = param.split("=",2);
+			String[] paramArr = param.split("=", 2);
 			responseMap.put(paramArr[0], paramArr[1]);
 		}
 
@@ -105,19 +105,19 @@ public class CallBackController {
 				new InstantorMsgId(responseMap.get("msg_id")), responseMap.get("payload").getBytes()));
 
 		System.out.println(decryptedPayload);
-		String accountNumber=null;
+		String accountNumber = null;
 		JsonParser jsonParser = new JsonParser();
 		JsonObject jsonPayload = (JsonObject) jsonParser.parse(decryptedPayload);
 		String bankName = jsonPayload.getAsJsonObject("bankInfo").get("name").getAsString();
 		JsonArray accountList = jsonPayload.getAsJsonArray("accountList");
-		for(JsonElement number : accountList) {
+		for (JsonElement number : accountList) {
 			accountNumber = number.getAsJsonObject().get("number").getAsString();
 		}
-		
+
 		String fileName = bankName + "_" + accountNumber + "_statement.json";
 		dataService.writeDataInFile(decryptedPayload, fileName);
-		System.out.println("Data successfully stored in "+fileName+" file");
-		return new ResponseEntity<>("Success", HttpStatus.OK);
+		System.out.println("Data successfully stored in " + fileName + " file");
+		return new ResponseEntity<Object>("OK:" + new InstantorMsgId(responseMap.get("msg_id")), HttpStatus.OK);
 	}
 
 	/**
