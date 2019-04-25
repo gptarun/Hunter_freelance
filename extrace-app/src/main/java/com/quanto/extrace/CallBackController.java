@@ -101,9 +101,8 @@ public class CallBackController {
 			responseMap.put(paramArr[0], paramArr[1]);
 		}
 
-		String decryptedPayload = new String(
-				InstantorEncryption.B64_MD5_AES_CBC_PKCS5.decrypt(new InstantorAPIKey(apiKey),
-						new InstantorMsgId(responseMap.get("msg_id")), responseMap.get("payload").getBytes()));
+		String decryptedPayload = new String(InstantorEncryption.B64_MD5_AES_CBC_PKCS5.decrypt(new InstantorAPIKey(apiKey),
+				new InstantorMsgId(responseMap.get("msg_id")), responseMap.get("payload").getBytes()));
 
 		System.out.println(decryptedPayload);
 		String accountNumber = null;
