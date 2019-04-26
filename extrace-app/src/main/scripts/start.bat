@@ -1,0 +1,1 @@
+java -Dlogging.config=../config/log4j2.xml -Dspring.config.location=../config/application.properties -jar ../lib/extrace-app.jar

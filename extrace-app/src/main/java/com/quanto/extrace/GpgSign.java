@@ -8,7 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.Security;
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -29,6 +28,8 @@ import org.bouncycastle.openpgp.PGPUtil;
 import org.bouncycastle.openpgp.operator.bc.BcPGPContentSignerBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -39,6 +40,9 @@ public class GpgSign {
 	private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
 	static final ClassLoader loader = GpgSign.class.getClassLoader();
 
+	@Value("${hunter.api.key.path}")
+	private String keyFile;
+	
 	// Copied Main to create signature
 	public Map<String, String> createSignature(String message) {
 
@@ -46,13 +50,13 @@ public class GpgSign {
 
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 
-		String privateKeyPassword = "Dota@123";
+		String privateKeyPassword = "test@123";
 
-		String filePath = "src\\main\\resources\\key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc";
+		String filePath = keyFile + "key_9F2B41233C5373FF4EDBD7DBC8EF9CEAF2AC5C5E.asc";
+//		
+//		InputStream file = loader.getResourceAsStream("key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc");
 		
-		InputStream file = loader.getResourceAsStream("key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc");
-		
-		readLineByLineJava8(filePath);
+//		readLineByLineJava8(filePath);
 		Map<String, String> signatureMap = signData(readLineByLineJava8(filePath), privateKeyPassword, message);
 		return signatureMap;
 	}
