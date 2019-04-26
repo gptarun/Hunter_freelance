@@ -49,7 +49,9 @@ public class GpgSign {
 		String privateKeyPassword = "Dota@123";
 
 		String filePath = "src\\main\\resources\\key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc";
-
+		
+		InputStream file = loader.getResourceAsStream("key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc");
+		
 		readLineByLineJava8(filePath);
 		Map<String, String> signatureMap = signData(readLineByLineJava8(filePath), privateKeyPassword, message);
 		return signatureMap;
