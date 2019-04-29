@@ -39,7 +39,8 @@ public class ExtraceRestController {
 		Map<String, String> sessionValues = null;
 		try {
 			System.out.println("Testing");
-			sessionValues = dataService.createSession("http://ec2-13-233-232-197.ap-south-1.compute.amazonaws.com:8080/webHookHunter");
+			sessionValues = dataService
+					.createSession("http://ec2-13-233-232-197.ap-south-1.compute.amazonaws.com:8080/webHookHunter");
 			variables = new JsonObject();
 			variables.addProperty("searchText", "test");
 
@@ -105,9 +106,10 @@ public class ExtraceRestController {
 		}
 
 		String fileName = bankName + "_" + accountNumber + "_statement.json";
-		//here we are going to pass extrace url, webhook type, payload and file name
-		dataService.sendDataToExtrace("need to give URL","instantor", decryptedPayload,fileName);
-		dataService.writeDataInFile(decryptedPayload, fileName);
+		// here we are going to pass extrace url, webhook type, payload and file name
+		String instantorURL = "http://ec2-18-207-220-175.compute-1.amazonaws.com:8080/bank_statement";
+		dataService.sendDataToExtrace(instantorURL, "instantor", decryptedPayload);
+		// dataService.writeDataInFile(decryptedPayload, fileName);
 		System.out.println("Data successfully stored in " + fileName + " file");
 		responseObject.put("OK", new InstantorMsgId(responseMap.get("msg_id")));
 		return new ResponseEntity<Object>(responseObject, HttpStatus.OK);

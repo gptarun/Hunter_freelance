@@ -22,6 +22,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import graphql.GraphQLException;
+
 /**
  * 
  * @author tarun
@@ -54,19 +55,21 @@ public class GraphQLClientHandling {
 		this.endpoint = endpoint;
 		this.headers = headers;
 	}
+
 	/**
 	 * Updates the header of the object
+	 * 
 	 * @param key
 	 * @param value
 	 */
 	public void updateHeader(String key, String value) {
 		this.headers.put(key, value);
 	}
-	
+
 	public void updateHeader(Map<String, String> header) {
 		this.headers = header;
 	}
-	
+
 	/**
 	 * Executes the given query or mutation.
 	 * 
@@ -84,7 +87,8 @@ public class GraphQLClientHandling {
 	 *             Thrown in case of errors set in the response body.
 	 */
 	public <T> T execute(String query, Function<JsonObject, T> mapper) throws IOException, GraphQLException {
-		return execute(query, new JsonObject(), String.valueOf(ZonedDateTime.now().toInstant().toEpochMilli()) , "1234", mapper);
+		return execute(query, new JsonObject(), String.valueOf(ZonedDateTime.now().toInstant().toEpochMilli()), "1234",
+				mapper);
 	}
 
 	/**
@@ -105,8 +109,8 @@ public class GraphQLClientHandling {
 	 * @throws GraphQLException
 	 *             Thrown in case of errors set in the response body.
 	 */
-	public <T> T execute(String query, JsonObject variables, String timeStamp, String uniqueId, Function<JsonObject, T> mapper)
-			throws IOException, GraphQLException {
+	public <T> T execute(String query, JsonObject variables, String timeStamp, String uniqueId,
+			Function<JsonObject, T> mapper) throws IOException, GraphQLException {
 		JsonObject body = new JsonObject();
 		body.addProperty("query", query);
 		body.add("variables", variables);
@@ -129,9 +133,8 @@ public class GraphQLClientHandling {
 
 		return mapper.apply(response.get("data").getAsJsonObject());
 	}
-	
-	public <T> T execute(JsonObject body, Function<JsonObject, T> mapper)
-			throws IOException, GraphQLException {
+
+	public <T> T execute(JsonObject body, Function<JsonObject, T> mapper) throws IOException, GraphQLException {
 		String responseString = execute(endpoint.toString(), body.toString(), headers);
 
 		JsonObject response = (JsonObject) (new JsonParser()).parse(responseString);
@@ -149,7 +152,7 @@ public class GraphQLClientHandling {
 
 		return mapper.apply(response.get("data").getAsJsonObject());
 	}
-	
+
 	private static String execute(String url, String jsonEntity, Map<String, String> headers) throws IOException {
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpPost httppost = new HttpPost(url);
@@ -159,7 +162,7 @@ public class GraphQLClientHandling {
 		}
 
 		StringEntity entity = new StringEntity(jsonEntity, ContentType.APPLICATION_JSON);
-
+		
 		httppost.setEntity(entity);
 
 		// Execute and get the response.
@@ -177,4 +180,3 @@ public class GraphQLClientHandling {
 		return contentString;
 	}
 }
-                                                                                                 

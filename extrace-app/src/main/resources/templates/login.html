@@ -15,19 +15,15 @@
 
     Testing :<input type="button" id="Query" onclick="queryMe();" value="Query Me"></input><br><br>
 
-    <div id="itor">
-        Instantor:<input type="button" id="load" value="Connect with Instantor"><br><br>
-        <iframe width="400" height="150"></iframe>
+    <div id="itor">       
+        Instantor :<iframe width="400" height="150"></iframe>
     </div>
     <script>
 
-        //<![CDATA[
-        $("#load").click(function () {
+        //<![CDATA[       
             var itor = new Instantor('acordo-certo-74e83a42-c174-4d07-ba28-1c164b1fd3f6.br');
             itor.userParam('environment', 'test');
             itor.load('#itor');
-
-        });
         //]]>
 
 

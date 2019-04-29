@@ -196,27 +196,22 @@ public class DataService {
 		}
 	}
 
-	public void sendDataToExtrace(String url, String methodType, String decryptedPayload, String fileName) {
+	public void sendDataToExtrace(String url, String methodType, String decryptedPayload) {
 		try {
 			if (methodType.equals("instantor")) {
-				JsonObject values = new JsonObject();
-				values.addProperty("fileName", fileName);
-				values.addProperty("payload", decryptedPayload);
-				httpPost(url, values, fileName);
+				httpPost(url, decryptedPayload);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private String httpPost(String url, JsonObject payload, String fileName)
-			throws ClientProtocolException, IOException {
+	private String httpPost(String url, String payload) throws ClientProtocolException, IOException {
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpPost httppost = new HttpPost(url);
-		StringEntity entity = new StringEntity(payload.toString(), ContentType.APPLICATION_JSON);
+		StringEntity entity = new StringEntity(payload, ContentType.APPLICATION_JSON);
 
 		httppost.setEntity(entity);
-
 		// Execute and get the response.
 		HttpResponse response = httpclient.execute(httppost);
 
