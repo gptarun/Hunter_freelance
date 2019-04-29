@@ -39,7 +39,7 @@ public class ExtraceRestController {
 		Map<String, String> sessionValues = null;
 		try {
 			System.out.println("Testing");
-			sessionValues = dataService.createSession("http://extrace.us-east-2.elasticbeanstalk.com/webHookHunter");
+			sessionValues = dataService.createSession("http://ec2-13-233-232-197.ap-south-1.compute.amazonaws.com:8080/webHookHunter");
 			variables = new JsonObject();
 			variables.addProperty("searchText", "test");
 
