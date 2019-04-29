@@ -71,6 +71,7 @@ public class ExtraceRestController {
 	public ResponseEntity<Object> webhookURL(@RequestBody String responseInstantor) throws InstantorException {
 
 		System.out.println("Testing");
+		Map<String, Object> responseObject = new HashMap();
 		// trying to fetch the body using instantor api
 
 		/*
@@ -104,9 +105,12 @@ public class ExtraceRestController {
 		}
 
 		String fileName = bankName + "_" + accountNumber + "_statement.json";
+		//here we are going to pass extrace url, webhook type, payload and file name
+		dataService.sendDataToExtrace("need to give URL","instantor", decryptedPayload,fileName);
 		dataService.writeDataInFile(decryptedPayload, fileName);
 		System.out.println("Data successfully stored in " + fileName + " file");
-		return new ResponseEntity<Object>("OK:" + new InstantorMsgId(responseMap.get("msg_id")), HttpStatus.OK);
+		responseObject.put("OK", new InstantorMsgId(responseMap.get("msg_id")));
+		return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
 	}
 
 	/**

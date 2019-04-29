@@ -50,9 +50,9 @@ public class GpgSign {
 
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 
-		String privateKeyPassword = "test@123";
+		String privateKeyPassword = "Dota@123";
 
-		String filePath = keyFile + "key_9F2B41233C5373FF4EDBD7DBC8EF9CEAF2AC5C5E.asc";
+		String filePath = keyFile + "key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc";
 //		
 //		InputStream file = loader.getResourceAsStream("key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc");
 		

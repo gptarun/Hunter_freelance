@@ -2,13 +2,22 @@ package com.quanto.extrace.service;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.HttpResponseException;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +30,7 @@ import com.quanto.extrace.GraphQLClientHandling;
 import com.quanto.extrace.model.Customer;
 
 import graphql.GraphQLException;
+import lombok.val;
 
 @Service
 public class DataService {
@@ -37,7 +47,7 @@ public class DataService {
 
 	@Value("${output.data.dir}")
 	private String outputDirectory;
-	
+
 	public Map<String, String> createSession(String callbackUrl) {
 		Map<String, String> sessionValues = new HashMap<>();
 		JsonObject variables = new JsonObject();
@@ -56,7 +66,8 @@ public class DataService {
 				Map<String, String> jsonMap = new HashMap<>();
 				System.out.println(o.toString());
 				jsonMap.put("sessionId", o.getAsJsonObject("Hunter_CreateSession").get("sessionId").toString());
-				jsonMap.put("sessionUrl", o.getAsJsonObject("Hunter_CreateSession").get("sessionUrl").toString().replaceAll("^\"", "").replaceAll("\"$", ""));
+				jsonMap.put("sessionUrl", o.getAsJsonObject("Hunter_CreateSession").get("sessionUrl").toString()
+						.replaceAll("^\"", "").replaceAll("\"$", ""));
 				return jsonMap;
 			});
 		} catch (GraphQLException e) {
@@ -100,7 +111,7 @@ public class DataService {
 		JsonObject variables = new JsonObject();
 		JsonObject data = null;
 		setCustomerData(fingerPrint);
-		
+
 		String query = "query GetAccountStatement {\r\n" + "  Bank_GetAccountStatement(\r\n"
 				+ "    routingType: $routingType, \r\n" + "    routingNumber: $routingNumber,\r\n"
 				+ "    branchNumber: $branchNumber,\r\n" + "    accountNumber: $accountNumber\r\n" + "  ) {\r\n"
@@ -119,7 +130,7 @@ public class DataService {
 		try {
 			data = graphQLClient.execute(body, (JsonObject o) -> {
 				return o;
-			});			
+			});
 		} catch (GraphQLException e) {
 			logger.error("Cannot create the hunter session", e);
 		} catch (IOException e) {
@@ -129,7 +140,7 @@ public class DataService {
 	}
 
 	public Map queryMe() {
-		Map reponseMap = new HashMap();		
+		Map reponseMap = new HashMap();
 		String query = "query Me {\r\n" + "  User_viewer {\r\n" + "    me {\r\n" + "      baseName\r\n" + "    }\r\n"
 				+ "  }\r\n" + "}";
 
@@ -147,7 +158,7 @@ public class DataService {
 		} catch (Exception e) {
 			reponseMap.put("Error", "Some exception");
 			e.printStackTrace();
-		}		
+		}
 		return reponseMap;
 
 	}
@@ -170,19 +181,55 @@ public class DataService {
 		body.addProperty("operationName", operationName);
 		body.addProperty("query", query);
 		body.add("variables", variables);
-		body.addProperty("_timestamp", ZonedDateTime.now().toInstant().toEpochMilli() + 14000);
+		body.addProperty("_timestamp", ZonedDateTime.now().toInstant().toEpochMilli());
 		// body.addProperty("_timestamp", new Date().getTime());
 		body.addProperty("_timeUniqueId", uniqueId + "" + ZonedDateTime.now().toInstant().toEpochMilli());
 		return body;
 	}
-	
+
 	public void writeDataInFile(String data, String fileName) {
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(outputDirectory + "/" + fileName)))) {
-		    bw.write(data);
-		    bw.close();
-		    } catch (IOException e) {
-		    	throw new RuntimeException("cannot write data to file",e);
+			bw.write(data);
+			bw.close();
+		} catch (IOException e) {
+			throw new RuntimeException("cannot write data to file", e);
+		}
+	}
+
+	public void sendDataToExtrace(String url, String methodType, String decryptedPayload, String fileName) {
+		try {
+			if (methodType.equals("instantor")) {
+				JsonObject values = new JsonObject();
+				values.addProperty("fileName", fileName);
+				values.addProperty("payload", decryptedPayload);
+				httpPost(url, values, fileName);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private String httpPost(String url, JsonObject payload, String fileName)
+			throws ClientProtocolException, IOException {
+		HttpClient httpclient = HttpClients.createDefault();
+		HttpPost httppost = new HttpPost(url);
+		StringEntity entity = new StringEntity(payload.toString(), ContentType.APPLICATION_JSON);
+
+		httppost.setEntity(entity);
+
+		// Execute and get the response.
+		HttpResponse response = httpclient.execute(httppost);
+
+		InputStream contentStream = response.getEntity().getContent();
+
+		String contentString = IOUtils.toString(contentStream, "UTF-8");
+
+		if (response.getStatusLine().getStatusCode() != 200) {
+			throw new HttpResponseException(response.getStatusLine().getStatusCode(),
+					"The server responded with" + contentString);
+		}
+
+		return contentString;
 	}
 
 }
