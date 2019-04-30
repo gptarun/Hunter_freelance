@@ -13,8 +13,6 @@
     <br>
     Hunter :<input type="button" id="Save" onclick="callHunterAPI();" value="Connect with Hunter"></input><br><br>
 
-    Testing :<input type="button" id="Query" onclick="queryMe();" value="Query Me"></input><br><br>
-
     <div id="itor">       
         Instantor :<iframe width="400" height="150"></iframe>
     </div>
@@ -63,7 +61,7 @@
                     "Content-Type": "application/json"
                 },
                 success: function (data) {
-                    console.log("Response : " + data);
+                    console.log("Response : " + data.OK.paramName);
                 }, error: function (jqXHR, textStatus, errorThrown) {
                 }
             });

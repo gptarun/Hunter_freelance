@@ -196,10 +196,10 @@ public class DataService {
 		}
 	}
 
-	public void sendDataToExtrace(String url, String methodType, String decryptedPayload) {
+	public void sendDataToExtrace(String url, String methodType, JsonObject payload) {
 		try {
-			if (methodType.equals("instantor")) {
-				httpPost(url, decryptedPayload);
+			if (methodType.equalsIgnoreCase("instantor")) {
+				httpPost(url, convertPayloadToExtrace(payload, methodType));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -207,11 +207,13 @@ public class DataService {
 	}
 
 	private String httpPost(String url, String payload) throws ClientProtocolException, IOException {
+		System.out.println(payload);
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpPost httppost = new HttpPost(url);
-		StringEntity entity = new StringEntity(payload, ContentType.APPLICATION_JSON);
-
+		StringEntity entity = new StringEntity(payload.toString(), ContentType.APPLICATION_JSON);
+		System.out.println(payload.toString());
 		httppost.setEntity(entity);
+
 		// Execute and get the response.
 		HttpResponse response = httpclient.execute(httppost);
 
@@ -225,6 +227,22 @@ public class DataService {
 		}
 
 		return contentString;
+	}
+
+	private String convertPayloadToExtrace(JsonObject payload, String methodType) {
+		JsonObject payloadJson = new JsonObject();
+		if (methodType.equalsIgnoreCase("instantor")) {
+			payloadJson.addProperty("account", "0000535");
+			payloadJson.addProperty("accountDigit", "5");
+			payloadJson.addProperty("bank", "237");
+			payloadJson.addProperty("bankIntegrationType", methodType);
+			payloadJson.add("bankStatement", payload);
+			payloadJson.addProperty("branch", "4054");
+
+		} else {
+
+		}
+		return payloadJson.toString();
 	}
 
 }

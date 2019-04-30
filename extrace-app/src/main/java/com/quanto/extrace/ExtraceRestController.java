@@ -71,7 +71,6 @@ public class ExtraceRestController {
 	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> webhookURL(@RequestBody String responseInstantor) throws InstantorException {
 
-		System.out.println("Testing");
 		Map<String, Object> responseObject = new HashMap();
 		// trying to fetch the body using instantor api
 
@@ -90,28 +89,27 @@ public class ExtraceRestController {
 			String[] paramArr = param.split("=", 2);
 			responseMap.put(paramArr[0], paramArr[1]);
 		}
-
+		String msgId = responseMap.get("msg_id");
 		String decryptedPayload = new String(
 				InstantorEncryption.B64_MD5_AES_CBC_PKCS5.decrypt(new InstantorAPIKey(apiKey),
 						new InstantorMsgId(responseMap.get("msg_id")), responseMap.get("payload").getBytes()));
 
-		System.out.println(decryptedPayload);
 		String accountNumber = null;
 		JsonParser jsonParser = new JsonParser();
 		JsonObject jsonPayload = (JsonObject) jsonParser.parse(decryptedPayload);
-		String bankName = jsonPayload.getAsJsonObject("bankInfo").get("name").getAsString();
-		JsonArray accountList = jsonPayload.getAsJsonArray("accountList");
-		for (JsonElement number : accountList) {
-			accountNumber = number.getAsJsonObject().get("number").getAsString();
-		}
-
-		String fileName = bankName + "_" + accountNumber + "_statement.json";
+		/*
+		 * String bankName =
+		 * jsonPayload.getAsJsonObject("bankInfo").get("name").getAsString(); JsonArray
+		 * accountList = jsonPayload.getAsJsonArray("accountList"); for (JsonElement
+		 * number : accountList) { accountNumber =
+		 * number.getAsJsonObject().get("number").getAsString(); }
+		 * 
+		 * String fileName = bankName + "_" + accountNumber + "_statement.json";
+		 */
 		// here we are going to pass extrace url, webhook type, payload and file name
 		String instantorURL = "http://ec2-18-207-220-175.compute-1.amazonaws.com:8080/bank_statement";
-		dataService.sendDataToExtrace(instantorURL, "instantor", decryptedPayload);
-		// dataService.writeDataInFile(decryptedPayload, fileName);
-		System.out.println("Data successfully stored in " + fileName + " file");
-		responseObject.put("OK", new InstantorMsgId(responseMap.get("msg_id")));
+		dataService.sendDataToExtrace(instantorURL, "INSTANTOR", jsonPayload);	
+		responseObject.put("OK", new InstantorMsgId(msgId));
 		return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
 	}
 
