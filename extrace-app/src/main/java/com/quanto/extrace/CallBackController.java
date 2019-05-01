@@ -16,5 +16,15 @@ public class CallBackController {
 	public String homePage() {
 		return "login";
 	}
+	
+	@RequestMapping("/instantor")
+	public String instantorPage() {
+		return "instantor";
+	}
+	
+	@RequestMapping("/hunter")
+	public String hunterPage() {
+		return "hunter";
+	}
 
 }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Hunter</title>
+</head>
+<body>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<h1>Please enter bank account info</h1>
+	<br> Hunter :
+	<input type="button" id="Save" onclick="callHunterAPI();"
+		value="Connect with Hunter"></input>
+	<br>
+	<br>
+
+	<script type="text/javascript">
+		function callHunterAPI() {
+			$.ajax({
+				url : "/callHunter",
+				type : "POST",
+				headers : {
+					"Content-Type" : "application/json"
+				},
+				success : function(data) {
+					window.location.href = data.sessionUrl;
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+				}
+			});
+		}
+
+		function queryMe() {
+			$.ajax({
+				url : "/queryMe",
+				type : "POST",
+				headers : {
+					"Content-Type" : "application/json"
+				},
+				success : function(data) {
+					console.log("URL: " + data.baseName);
+				},
+				error : function(jqXHR, textStatus, errorThrown) {
+				}
+			});
+		}
+	</script>
+</body>
+</html>

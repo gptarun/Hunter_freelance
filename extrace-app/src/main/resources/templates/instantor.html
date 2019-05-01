@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Instantor</title>
+</head>
+<body>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://www.instantor.com.br/frame-loader/instantor-0.7.3.min.js"></script>
+	<div id="itor">
+		Instantor :
+		<iframe width="400" height="150"></iframe>
+	</div>
+	<script>
+		//<![CDATA[       
+		var itor = new Instantor(
+				'acordo-certo-74e83a42-c174-4d07-ba28-1c164b1fd3f6.br');
+		itor.userParam('environment', 'test');
+		itor.load('#itor');
+		//]]>
+	</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "account": "0000535",
+  "accountDigit": 5,
+  "bank": 237,
+  "bankIntegrationType": "HUNTER",
+  "bankStatement": {
+    "bank": 345,
+    "transactions": {
+      "1": "C800.00",
+      "2": "D550"
+    }
+  },
+  "branch": 4054
+}
