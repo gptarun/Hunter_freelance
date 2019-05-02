@@ -1,5 +1,7 @@
 package com.quanto.extrace;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -17,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.instantor.api.InstantorException;
@@ -70,10 +70,11 @@ public class ExtraceRestController {
 	 * This request will be called by the Instantor API
 	 * 
 	 * @throws InstantorException
+	 * @throws UnsupportedEncodingException 
 	 * @throws NumberFormatException
 	 */
 	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ResponseEntity<Object> webhookURL(@RequestBody String responseInstantor) throws InstantorException {
+	public ResponseEntity<Object> webhookURL(@RequestBody String responseInstantor) throws InstantorException, UnsupportedEncodingException {
 
 		Map<String, Object> responseObject = new HashMap();
 		// trying to fetch the body using instantor api
@@ -85,6 +86,7 @@ public class ExtraceRestController {
 		 * instantorParams.iA.getParamName(), instantorParams.iP.getParamName(),
 		 * Long.parseLong(instantorParams.iT.getParamName()));
 		 */
+		String decodedResponse = URLDecoder.decode(responseInstantor,"UTF-8");
 		logger.info("Get the webhook url response");
 		List<String> responseParams = Arrays.asList(responseInstantor.split("&"));
 		logger.info("The webhook response :- [{}]",responseInstantor);
