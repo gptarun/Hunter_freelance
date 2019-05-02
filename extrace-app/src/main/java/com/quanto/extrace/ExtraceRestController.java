@@ -88,8 +88,8 @@ public class ExtraceRestController {
 		 */
 		String decodedResponse = URLDecoder.decode(responseInstantor,"UTF-8");
 		logger.info("Get the webhook url response");
-		List<String> responseParams = Arrays.asList(responseInstantor.split("&"));
-		logger.info("The webhook response :- [{}]",responseInstantor);
+		List<String> responseParams = Arrays.asList(decodedResponse.split("&"));
+		logger.info("The webhook response :- [{}]",decodedResponse);
 		Map<String, String> responseMap = new HashMap<>();
 		for (String param : responseParams) {
 			String[] paramArr = param.split("=", 2);
