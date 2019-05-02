@@ -1,5 +1,7 @@
 package com.quanto.extrace;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -66,10 +68,11 @@ public class ExtraceRestController {
 	 * This request will be called by the Instantor API
 	 * 
 	 * @throws InstantorException
+	 * @throws UnsupportedEncodingException 
 	 * @throws NumberFormatException
 	 */
 	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ResponseEntity<Object> webhookURL(@RequestBody String responseInstantor) throws InstantorException {
+	public ResponseEntity<Object> webhookURL(@RequestBody String responseInstantor) throws InstantorException, UnsupportedEncodingException {
 
 		Map<String, Object> responseObject = new HashMap();
 		// trying to fetch the body using instantor api
@@ -81,8 +84,10 @@ public class ExtraceRestController {
 		 * instantorParams.iA.getParamName(), instantorParams.iP.getParamName(),
 		 * Long.parseLong(instantorParams.iT.getParamName()));
 		 */
+		String decodedResponse = URLDecoder.decode(responseInstantor,"UTF-8");
+				
 		System.out.println("Get the webhook url response");
-		List<String> responseParams = Arrays.asList(responseInstantor.split("&"));
+		List<String> responseParams = Arrays.asList(decodedResponse.split("&"));
 		System.out.println(responseInstantor);
 		Map<String, String> responseMap = new HashMap<>();
 		for (String param : responseParams) {
