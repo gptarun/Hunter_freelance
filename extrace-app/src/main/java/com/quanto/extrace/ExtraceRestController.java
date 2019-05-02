@@ -68,7 +68,7 @@ public class ExtraceRestController {
 	 * @throws InstantorException
 	 * @throws NumberFormatException
 	 */
-	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
 	public ResponseEntity<Object> webhookURL(@RequestBody String responseInstantor) throws InstantorException {
 
 		Map<String, Object> responseObject = new HashMap();
