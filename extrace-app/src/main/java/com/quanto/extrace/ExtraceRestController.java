@@ -68,10 +68,10 @@ public class ExtraceRestController {
 	 * @throws InstantorException
 	 * @throws NumberFormatException
 	 */
-	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+	@RequestMapping(value = "/webhookInstantor", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> webhookURL(@RequestBody String responseInstantor) throws InstantorException {
 
-		String responseObject = "";
+		Map<String, Object> responseObject = new HashMap();
 		// trying to fetch the body using instantor api
 
 		/*
@@ -94,6 +94,7 @@ public class ExtraceRestController {
 				InstantorEncryption.B64_MD5_AES_CBC_PKCS5.decrypt(new InstantorAPIKey(apiKey),
 						new InstantorMsgId(responseMap.get("msg_id")), responseMap.get("payload").getBytes()));
 
+		String accountNumber = null;
 		JsonParser jsonParser = new JsonParser();
 		JsonObject jsonPayload = (JsonObject) jsonParser.parse(decryptedPayload);
 		/*
@@ -108,7 +109,7 @@ public class ExtraceRestController {
 		// here we are going to pass extrace url, webhook type, payload and file name
 		String instantorURL = "http://ec2-18-207-220-175.compute-1.amazonaws.com:8080/bank_statement";
 		dataService.sendDataToExtrace(instantorURL, "INSTANTOR", jsonPayload);
-		responseObject = "OK: " + new InstantorMsgId(msgId);
+		responseObject.put("OK", msgId);
 		return new ResponseEntity<Object>(responseObject, HttpStatus.OK);
 	}
 
