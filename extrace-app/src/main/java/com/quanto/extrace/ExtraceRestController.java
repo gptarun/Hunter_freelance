@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,8 @@ import com.quanto.extrace.service.DataService;
 
 @RestController
 public class ExtraceRestController {
+	private static Logger logger = LoggerFactory.getLogger(ExtraceRestController.class);
+	
 	@Autowired
 	private DataService dataService;
 
@@ -38,14 +42,14 @@ public class ExtraceRestController {
 		JsonObject variables = null;
 		Map<String, String> sessionValues = null;
 		try {
-			System.out.println("Testing");
+			logger.info("Testing the call hunter api");
 			sessionValues = dataService
 					.createSession("http://ec2-13-233-232-197.ap-south-1.compute.amazonaws.com:8080/webHookHunter");
 			variables = new JsonObject();
 			variables.addProperty("searchText", "test");
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw new RuntimeException("",e);
 		}
 		return new ResponseEntity<>(sessionValues, HttpStatus.OK);
 	}
@@ -55,7 +59,7 @@ public class ExtraceRestController {
 	 */
 	@RequestMapping(value = "/webHookHunter", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String handleResponse(@RequestBody JsonObject response) {
-		System.out.println("Hunter's response : " + response);
+		logger.info("Hunter's response : " + response);
 		String fingerPrint = response.get("fingerPrint").toString();
 		JsonObject customerStatement = dataService.getCustomerStatement(fingerPrint);
 		// store the data to JSON file
@@ -81,9 +85,9 @@ public class ExtraceRestController {
 		 * instantorParams.iA.getParamName(), instantorParams.iP.getParamName(),
 		 * Long.parseLong(instantorParams.iT.getParamName()));
 		 */
-		System.out.println("Get the webhook url response");
+		logger.info("Get the webhook url response");
 		List<String> responseParams = Arrays.asList(responseInstantor.split("&"));
-		System.out.println(responseInstantor);
+		logger.info("The webhook response :- [{}]",responseInstantor);
 		Map<String, String> responseMap = new HashMap<>();
 		for (String param : responseParams) {
 			String[] paramArr = param.split("=", 2);
@@ -119,30 +123,26 @@ public class ExtraceRestController {
 	@RequestMapping(value = "/queryMe", method = RequestMethod.POST)
 	public ResponseEntity<Object> queryMe() {
 		Map response = null;
-		System.out.println("Inside the query me");
-		try {
-			response = dataService.queryMe();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		logger.info("triggering the query me operation");
+		response = dataService.queryMe();
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/getUser", method = RequestMethod.POST)
 	public ResponseEntity<Object> getUser() {
-		System.out.println("Get the user data url response");
+		logger.info("Get the user data url response");
 		return new ResponseEntity<>("Sucess", HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/getAccountDetails", method = RequestMethod.POST)
 	public ResponseEntity<Object> getAccountDetails() {
-		System.out.println("Get the account details url response");
+		logger.info("Get the account details url response");
 		return new ResponseEntity<>("Sucess", HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/getAccountStatement", method = RequestMethod.POST)
 	public ResponseEntity<Object> getAccountStatement() {
-		System.out.println("Get the account statement url response");
+		logger.info("Get the account statement url response");
 		return new ResponseEntity<>("Sucess", HttpStatus.OK);
 	}
 }

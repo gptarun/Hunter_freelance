@@ -6,7 +6,7 @@
 	<groupId>com.quanto</groupId>
 	<artifactId>extrace-app</artifactId>
 	<version>1.0.0</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>extrace-app</name>
 	<url>http://maven.apache.org</url>

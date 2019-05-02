@@ -30,7 +30,6 @@ import com.quanto.extrace.GraphQLClientHandling;
 import com.quanto.extrace.model.Customer;
 
 import graphql.GraphQLException;
-import lombok.val;
 
 @Service
 public class DataService {
@@ -58,7 +57,7 @@ public class DataService {
 		// variables.addProperty("$callbackUrl", callbackUrl);
 
 		JsonObject body = createBody("CreateSession", query, variables, "extraceCreateSession");
-		System.out.println(body);
+		logger.info("Create Session query :- [{}]",body);
 		headerUtil(body.toString());
 
 		try {
@@ -131,16 +130,14 @@ public class DataService {
 			data = graphQLClient.execute(body, (JsonObject o) -> {
 				return o;
 			});
-		} catch (GraphQLException e) {
-			logger.error("Cannot create the hunter session", e);
-		} catch (IOException e) {
-			logger.error("Cannot create the hunter session", e);
-		}
+		} catch (GraphQLException | IOException e) {
+			throw new RuntimeException("cannot create hunter session due to :- ", e);
+		} 
 		return data;
 	}
 
-	public Map queryMe() {
-		Map reponseMap = new HashMap();
+	public Map<String, Object> queryMe() {
+		Map<String, Object> reponseMap = new HashMap<>();
 		String query = "query Me {\r\n" + "  User_viewer {\r\n" + "    me {\r\n" + "      baseName\r\n" + "    }\r\n"
 				+ "  }\r\n" + "}";
 
@@ -151,13 +148,12 @@ public class DataService {
 			JsonObject data = graphQLClient.execute(body, (JsonObject o) -> {
 				return o;
 			});
-			System.out.println(data.toString());
+			logger.info("Data returned from the query me operation from hunter's api :- [{}] ",data.toString());
 			String baseName = data.getAsJsonObject("User_viewer").getAsJsonObject("me").get("baseName").toString();
 			reponseMap.put("baseName", baseName);
-			System.out.println(baseName.toString());
-		} catch (Exception e) {
+		} catch (IOException e) {
 			reponseMap.put("Error", "Some exception");
-			e.printStackTrace();
+			throw new RuntimeException("could not get the respone of query me operation due to :- ", e);
 		}
 		return reponseMap;
 
@@ -168,7 +164,7 @@ public class DataService {
 		Map<String, String> keySignature = gpgSign.createSignature(headerFormat);
 		header = keySignature.get("fingerPrint") + "_" + keySignature.get("hashingAlgo") + "_"
 				+ keySignature.get("asciiArmoredSignature");
-		System.out.println(header);
+		logger.info("Header created after getting generated the signature :- [{]] ",header);
 		graphQLClient.updateHeader("signature", header);
 	}
 
@@ -182,7 +178,6 @@ public class DataService {
 		body.addProperty("query", query);
 		body.add("variables", variables);
 		body.addProperty("_timestamp", ZonedDateTime.now().toInstant().toEpochMilli());
-		// body.addProperty("_timestamp", new Date().getTime());
 		body.addProperty("_timeUniqueId", uniqueId + "" + ZonedDateTime.now().toInstant().toEpochMilli());
 		return body;
 	}
@@ -197,21 +192,20 @@ public class DataService {
 	}
 
 	public void sendDataToExtrace(String url, String methodType, JsonObject payload) {
-		try {
-			if (methodType.equalsIgnoreCase("instantor")) {
+		if (methodType.equalsIgnoreCase("instantor")) {
+			try {
 				httpPost(url, convertPayloadToExtrace(payload, methodType));
+			} catch (IOException e) {
+				throw new RuntimeException("cannot send request to instantator due to :- ", e);
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
 		}
 	}
 
 	private String httpPost(String url, String payload) throws ClientProtocolException, IOException {
-		System.out.println(payload);
 		HttpClient httpclient = HttpClients.createDefault();
 		HttpPost httppost = new HttpPost(url);
 		StringEntity entity = new StringEntity(payload.toString(), ContentType.APPLICATION_JSON);
-		System.out.println(payload.toString());
+		logger.info("payload which is sent to instantor :- [{}]",payload.toString());
 		httppost.setEntity(entity);
 
 		// Execute and get the response.
