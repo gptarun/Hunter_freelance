@@ -214,7 +214,7 @@ public class DataService {
 		InputStream contentStream = response.getEntity().getContent();
 
 		String contentString = IOUtils.toString(contentStream, "UTF-8");
-
+		logger.info("Response status from instantor [{}] url is :- [{}]",url,response.getStatusLine().getStatusCode());
 		if (response.getStatusLine().getStatusCode() != 200) {
 			throw new HttpResponseException(response.getStatusLine().getStatusCode(),
 					"The server responded with" + contentString);
