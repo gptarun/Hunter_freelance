@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.quanto.extrace.GpgSign;
 import com.quanto.extrace.GraphQLClientHandling;
@@ -226,12 +227,13 @@ public class DataService {
 	private String convertPayloadToExtrace(JsonObject payload, String methodType) {
 		JsonObject payloadJson = new JsonObject();
 		if (methodType.equalsIgnoreCase("instantor")) {
-			payloadJson.addProperty("account", "0000535");
-			payloadJson.addProperty("accountDigit", "5");
-			payloadJson.addProperty("bank", "237");
+			JsonArray props = payload.getAsJsonArray("accountReportList");				
+			payloadJson.add("account", props.get(0).getAsJsonObject().get("number"));
+			payloadJson.addProperty("accountDigit", props.get(0).getAsJsonObject().get("number").getAsString().length());
+			payloadJson.add("bank", payload.getAsJsonObject().get("bankInfo").getAsJsonObject().get("name"));
 			payloadJson.addProperty("bankIntegrationType", methodType);
 			payloadJson.add("bankStatement", payload);
-			payloadJson.addProperty("branch", "4054");
+			payloadJson.add("branch", payload.getAsJsonObject().get("bankInfo").getAsJsonObject().get("id"));
 
 		} else {
 
