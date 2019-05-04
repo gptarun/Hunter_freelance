@@ -1,9 +1,11 @@
 package com.quanto.extrace;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,13 +30,15 @@ import org.bouncycastle.openpgp.PGPUtil;
 import org.bouncycastle.openpgp.operator.bc.BcPGPContentSignerBuilder;
 import org.bouncycastle.openpgp.operator.jcajce.JcaKeyFingerprintCalculator;
 import org.bouncycastle.openpgp.operator.jcajce.JcePBESecretKeyDecryptorBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GpgSign {
-
+	private static Logger logger = LoggerFactory.getLogger(GpgSign.class);
+	
 	private static final int BUFFER_SIZE = 4096;
 	private static int signatureAlgo = HashAlgorithmTags.SHA512;
 	private final static char[] hexArray = "0123456789ABCDEF".toCharArray();
@@ -46,33 +50,35 @@ public class GpgSign {
 	// Copied Main to create signature
 	public Map<String, String> createSignature(String message) {
 
-		System.out.println("The input is : " + message);
-
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 
-		String privateKeyPassword = "Dota@123";
+		String privateKeyPassword = "test@123";
 
-		String filePath = keyFile + "key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc";
-//		
-//		InputStream file = loader.getResourceAsStream("key_DB3DC4E59E3E337E52D1F98927E1F7EC3119CE6D.asc");
+		String privateKeyData = getPrivateKeyData("key_9F2B41233C5373FF4EDBD7DBC8EF9CEAF2AC5C5E.asc");
 		
-//		readLineByLineJava8(filePath);
-		Map<String, String> signatureMap = signData(readLineByLineJava8(filePath), privateKeyPassword, message);
+		Map<String, String> signatureMap = signData(privateKeyData, privateKeyPassword, message);
 		return signatureMap;
 	}
 
 	// Read file content into string with - Files.lines(Path path, Charset cs)
 
-	private static String readLineByLineJava8(String filePath) {
-		StringBuilder contentBuilder = new StringBuilder();
-
-		try (Stream<String> stream = Files.lines(Paths.get(filePath), StandardCharsets.UTF_8)) {
-			stream.forEach(s -> contentBuilder.append(s).append("\n"));
+	private String getPrivateKeyData(String filePath) {
+		String privateKeyData= "";
+		try(InputStream inputStream = 
+			      getClass().getClassLoader().getResourceAsStream(filePath);){
+			try(BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));){
+				String line;
+				String lineSeparator = "";
+				while ((line = reader.readLine()) != null) {
+					privateKeyData = privateKeyData + lineSeparator + line;
+					lineSeparator = System.lineSeparator();
+				}
+			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error("Cannot read the key due to :-", e);
+			throw new RuntimeException(e);
 		}
-
-		return contentBuilder.toString();
+		return privateKeyData;
 	}
 
 	public static Map<String, String> signData(final String privKeyData, final String password, final String data) {
@@ -89,10 +95,11 @@ public class GpgSign {
 			resultMap.put("asciiArmoredSignature", getBase64Payload(signature));
 			resultMap.put("hashingAlgo", hashAlgoToString(signatureAlgo));
 			resultMap.put("fingerPrint", shortFingerprint(bytesToHex(secKey.getPublicKey().getFingerprint())));
+			
 			// endregion
 		} catch (IOException | PGPException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error("Cannot read the key due to :-", e);
+			throw new RuntimeException(e);
 		}
 		return resultMap;
 	}
@@ -109,7 +116,7 @@ public class GpgSign {
 		if (fingerprint != null && !fingerprint.isEmpty()) {
 			shortFingerprint = fingerprint.substring(fingerprint.length() - 16, fingerprint.length());
 		} else {
-			System.out.println("Invalid fingerprint");
+			logger.error("Invalid fingerprint");
 		}
 		return shortFingerprint;
 	}

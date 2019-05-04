@@ -131,6 +131,7 @@ public class DataService {
 				return o;
 			});
 		} catch (GraphQLException | IOException e) {
+			logger.error("cannot create hunter session due to :- ", e);
 			throw new RuntimeException("cannot create hunter session due to :- ", e);
 		} 
 		return data;
@@ -153,6 +154,7 @@ public class DataService {
 			reponseMap.put("baseName", baseName);
 		} catch (IOException e) {
 			reponseMap.put("Error", "Some exception");
+			logger.error("could not get the respone of query me operation due to :- ", e);
 			throw new RuntimeException("could not get the respone of query me operation due to :- ", e);
 		}
 		return reponseMap;
@@ -164,7 +166,7 @@ public class DataService {
 		Map<String, String> keySignature = gpgSign.createSignature(headerFormat);
 		header = keySignature.get("fingerPrint") + "_" + keySignature.get("hashingAlgo") + "_"
 				+ keySignature.get("asciiArmoredSignature");
-		logger.info("Header created after getting generated the signature :- [{]] ",header);
+		logger.info("Header created after getting generated the signature :- [{}] ",header);
 		graphQLClient.updateHeader("signature", header);
 	}
 
@@ -183,11 +185,16 @@ public class DataService {
 	}
 
 	public void writeDataInFile(String data, String fileName) {
+		File outputDir = new File(outputDirectory);
+		if(!outputDir.exists()) {
+			outputDir.mkdirs();
+		}
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(outputDirectory + "/" + fileName)))) {
 			bw.write(data);
 			bw.close();
 		} catch (IOException e) {
-			throw new RuntimeException("cannot write data to file", e);
+			logger.error("cannot write data to file due to :- ", e);
+			throw new RuntimeException("cannot write data to file due to :- ", e);
 		}
 	}
 
@@ -196,6 +203,7 @@ public class DataService {
 			try {
 				httpPost(url, convertPayloadToExtrace(payload, methodType));
 			} catch (IOException e) {
+				logger.error("cannot send request to instantator due to :- ", e);
 				throw new RuntimeException("cannot send request to instantator due to :- ", e);
 			}
 		}
@@ -216,6 +224,8 @@ public class DataService {
 		String contentString = IOUtils.toString(contentStream, "UTF-8");
 		logger.info("Response status from instantor [{}] url is :- [{}]",url,response.getStatusLine().getStatusCode());
 		if (response.getStatusLine().getStatusCode() != 200) {
+			logger.error(response.getStatusLine().getStatusCode() +
+					"The server responded with" + contentString);
 			throw new HttpResponseException(response.getStatusLine().getStatusCode(),
 					"The server responded with" + contentString);
 		}

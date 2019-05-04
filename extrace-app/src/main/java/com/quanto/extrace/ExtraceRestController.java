@@ -49,7 +49,8 @@ public class ExtraceRestController {
 			variables.addProperty("searchText", "test");
 
 		} catch (Exception e) {
-			throw new RuntimeException("",e);
+			logger.error("Testing the call hunter api not worked due to :- ",e);
+			throw new RuntimeException(e);
 		}
 		return new ResponseEntity<>(sessionValues, HttpStatus.OK);
 	}
@@ -86,6 +87,7 @@ public class ExtraceRestController {
 		 * instantorParams.iA.getParamName(), instantorParams.iP.getParamName(),
 		 * Long.parseLong(instantorParams.iT.getParamName()));
 		 */
+		
 		String decodedResponse = URLDecoder.decode(responseInstantor,"UTF-8");
 		logger.info("Get the webhook url response");
 		List<String> responseParams = Arrays.asList(decodedResponse.split("&"));
@@ -103,6 +105,7 @@ public class ExtraceRestController {
 		String accountNumber = null;
 		JsonParser jsonParser = new JsonParser();
 		JsonObject jsonPayload = (JsonObject) jsonParser.parse(decryptedPayload);
+		
 		/*
 		 * String bankName =
 		 * jsonPayload.getAsJsonObject("bankInfo").get("name").getAsString(); JsonArray
@@ -112,6 +115,7 @@ public class ExtraceRestController {
 		 * 
 		 * String fileName = bankName + "_" + accountNumber + "_statement.json";
 		 */
+		
 		// here we are going to pass extrace url, webhook type, payload and file name
 		String instantorURL = "http://ec2-18-207-220-175.compute-1.amazonaws.com:8080/bank_statement";
 		dataService.sendDataToExtrace(instantorURL, "INSTANTOR", jsonPayload);
