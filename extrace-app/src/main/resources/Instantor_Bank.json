@@ -1,95 +1,3428 @@
-{ 
-   "instantorRequestId":"30150cb9-1855-4085-9ecb-cf7072742403",
-   "processFinishedTime":"2016-11-28T11:38:43.991+01:00",
-   "processStartTime":"2016-11-23T10:19:50.824+01:00",
-   "processStatus":"ok",
-   "reportNumber":2,
-   "miscParams":[ 
-      { 
-         "name":"report_misc_param_name",
-         "value":"report_misc_param_value"
-      }
-   ],
-   "accountReportList":[ 
-      { 
-         "number":"1234-5678-90123",
-         "totalNumberOfTransactions":33,
-         "wholeMonthsAvailable":3,
-         "averageNumberOfTransactionsWholeMonth":10.3,
-         "averageAmountOfIncomingTransactionsWholeMonth":0.0,
-         "averageAmountOfOutgoingTransactionsWholeMonth":-12.0,
-         "averageMinimumBalanceWholeMonth":-36.0,
-         "cashFlow":[ 
-            { 
-               "calendarMonth":"2016-11-01",
-               "incoming":0.0,
-               "outgoing":0.0,
-               "minBalance":-48.0,
-               "maxBalance":-48.0,
-               "avgBalance":-48.0,
-               "isWholeMonth":false
-            }
-         ]
-      }
-   ],
-   "userDetails":{ 
-      "name":"netbanking_owner_name",
-      "address":[ 
-         "Address 1"
-      ],
-      "phone":[ 
-         "Phone 1"
-      ],
-      "email":[ 
-         "Email 1"
-      ],
-      "personalIdentifier":[
-         { 
-            "name":"personal_id_name",
-            "value":"personal_id_value"
-         }
-      ]
-   },
-   "bankInfo":{ 
-      "name":"bank_name",
-      "country":"country_identifier",
-      "id":"bank_identifier"
-   },
-   "accountList":[ 
-      { 
-         "number":"1234-5678-90123",
-         "type":"account_type",
-         "balance":-48.0,
-         "currency":"PLN",
-         "iban":"account_iban",
-         "holderName":"Jon Doe",
-         "openedAt":"date",
-         "availableAmount":100.00,
-         "nationalBankId":{ 
-            "name":"national_bank_id_name",
-            "value":"123123123"
-         },
-         "transactionList":[ 
-            { 
-               "onDate":"2016-11-01",
-               "valueDate":"2016-11-01",
-               "bookingDate":"2016-11-01",
-               "description":"transaction_description",
-               "amount":0.0,
-               "balance":-48.0,
-               "type":"transaction_type",
-               "referenceID":"transaction_reference_id",
-               "category":"transaction_category",
-               "payerPayeeName":"payer_payee_name",
-               "payerPayeeAccount":"payer_payee_account",
-               "params":[
-                  {
-                     "name":"transaction_param_name",
-                     "value":"transaction_param_value"
-                  }
-               ]
-            }
-         ]
-      }
-   ]
+{
+	"instantorRequestId": "9b117e35-eb51-417a-a78d-1a22b0214685",
+	"processFinishedTime": "2019-05-02T20:55:25.712+02:00",
+	"processStartTime": "2019-05-02T20:55:10.658+02:00",
+	"processStatus": "ok",
+	"reportNumber": 0,
+	"miscParams": [{
+		"name": "environment",
+		"value": "test"
+	},
+	{
+		"name": "instantor_request_id",
+		"value": "9b117e35-eb51-417a-a78d-1a22b0214685"
+	}],
+	"accountReportList": [{
+		"number": "BR4290483700918998553093822I7",
+		"totalNumberOfTransactions": 233,
+		"wholeMonthsAvailable": 11,
+		"averageNumberOfTransactionsWholeMonth": 19.363636363636363,
+		"averageAmountOfIncomingTransactionsWholeMonth": 40912.18,
+		"averageAmountOfOutgoingTransactionsWholeMonth": -4878.18,
+		"averageMinimumBalanceWholeMonth": -215698.18,
+		"cashFlow": [{
+			"calendarMonth": "2019-05-01",
+			"incoming": 3050.0,
+			"outgoing": -553.0,
+			"minBalance": 2115.0,
+			"maxBalance": 4612.0,
+			"avgBalance": 3363.5,
+			"isWholeMonth": false
+		},
+		{
+			"calendarMonth": "2019-04-01",
+			"incoming": 37878.0,
+			"outgoing": -3971.0,
+			"minBalance": -32983.0,
+			"maxBalance": 3179.0,
+			"avgBalance": -25011.57,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2019-03-01",
+			"incoming": 40226.0,
+			"outgoing": -3193.0,
+			"minBalance": -70077.0,
+			"maxBalance": -31138.0,
+			"avgBalance": -60060.42,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2019-02-01",
+			"incoming": 42838.0,
+			"outgoing": -3994.0,
+			"minBalance": -106939.0,
+			"maxBalance": -68581.0,
+			"avgBalance": -100616.14,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2019-01-01",
+			"incoming": 39823.0,
+			"outgoing": -7806.0,
+			"minBalance": -144783.0,
+			"maxBalance": -106985.0,
+			"avgBalance": -134341.65,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2018-12-01",
+			"incoming": 46309.0,
+			"outgoing": -4340.0,
+			"minBalance": -181314.0,
+			"maxBalance": -139686.0,
+			"avgBalance": -170655.23,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2018-11-01",
+			"incoming": 40851.0,
+			"outgoing": -4563.0,
+			"minBalance": -217943.0,
+			"maxBalance": -180841.0,
+			"avgBalance": -208165.27,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2018-10-01",
+			"incoming": 38490.0,
+			"outgoing": -4208.0,
+			"minBalance": -252556.0,
+			"maxBalance": -217208.0,
+			"avgBalance": -243958.52,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2018-09-01",
+			"incoming": 40082.0,
+			"outgoing": -6654.0,
+			"minBalance": -289517.0,
+			"maxBalance": -252225.0,
+			"avgBalance": -280084.7,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2018-08-01",
+			"incoming": 42219.0,
+			"outgoing": -6440.0,
+			"minBalance": -322757.0,
+			"maxBalance": -285199.0,
+			"avgBalance": -312461.45,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2018-07-01",
+			"incoming": 40048.0,
+			"outgoing": -4442.0,
+			"minBalance": -357756.0,
+			"maxBalance": -321432.0,
+			"avgBalance": -349022.35,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2018-06-01",
+			"incoming": 41270.0,
+			"outgoing": -4049.0,
+			"minBalance": -396055.0,
+			"maxBalance": -357038.0,
+			"avgBalance": -386911.77,
+			"isWholeMonth": true
+		},
+		{
+			"calendarMonth": "2018-05-01",
+			"incoming": 38208.0,
+			"outgoing": -4067.0,
+			"minBalance": -428389.0,
+			"maxBalance": -393413.0,
+			"avgBalance": -418797.79,
+			"isWholeMonth": false
+		}]
+	}],
+	"userDetails": {
+		"name": "Barbara Martínez",
+		"address": ["PRIVATE: Wavertree Causeway 195, 77805 Anchorage, Somalia"],
+		"phone": ["PRIVATE: 555 151-4416"],
+		"email": ["PRIVATE: barbara.martínez@example.net"],
+		"personalIdentifier": [{
+			"name": "cpf",
+			"value": "190202289"
+		}]
+	},
+	"bankInfo": {
+		"name": "Santander",
+		"country": "br",
+		"id": "70fd71ab-0748-48bd-bf33-d4f326e2e947"
+	},
+	"accountList": [{
+		"number": "BR4290483700918998553093822I7",
+		"type": "Deposit",
+		"balance": 4612.0,
+		"currency": "BRL",
+		"iban": "BR4210007877689260789489657W8",
+		"holderName": "Barbara Martínez",
+		"openedAt": "2019-05-02",
+		"availableAmount": 4612.0,
+		"transactionList": [{
+			"onDate": "2019-05-02",
+			"valueDate": "2019-05-02",
+			"bookingDate": "2019-05-02",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Shipping Labs",
+			"amount": -553.0,
+			"balance": 4612.0,
+			"type": "Fake account transaction",
+			"referenceID": "5638297417",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-05-02",
+			"valueDate": "2019-05-02",
+			"bookingDate": "2019-05-02",
+			"description": "Type: Fake account transaction; Category: Fake; Description: OtherRecur/Fake money transfer : eBiotic",
+			"amount": 3050.0,
+			"balance": 5165.0,
+			"type": "Fake account transaction",
+			"referenceID": "6285542309",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-30",
+			"valueDate": "2019-04-30",
+			"bookingDate": "2019-04-30",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Foods USA",
+			"amount": -847.0,
+			"balance": 2115.0,
+			"type": "Fake account transaction",
+			"referenceID": "2749332506",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-29",
+			"valueDate": "2019-04-29",
+			"bookingDate": "2019-04-29",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : G-Enterprises",
+			"amount": -159.0,
+			"balance": 2962.0,
+			"type": "Fake account transaction",
+			"referenceID": "4353840403",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-27",
+			"valueDate": "2019-04-27",
+			"bookingDate": "2019-04-27",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Imports Labs",
+			"amount": -58.0,
+			"balance": 3121.0,
+			"type": "Fake account transaction",
+			"referenceID": "9735692039",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-26",
+			"valueDate": "2019-04-26",
+			"bookingDate": "2019-04-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 14995.0,
+			"balance": 3179.0,
+			"type": "Fake account transaction",
+			"referenceID": "9151407224",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-26",
+			"valueDate": "2019-04-26",
+			"bookingDate": "2019-04-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : First Networks",
+			"amount": 237.0,
+			"balance": -11816.0,
+			"type": "Fake account transaction",
+			"referenceID": "9743518536",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-24",
+			"valueDate": "2019-04-24",
+			"bookingDate": "2019-04-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 20150.0,
+			"balance": -12053.0,
+			"type": "Fake account transaction",
+			"referenceID": "2418322844",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-24",
+			"valueDate": "2019-04-24",
+			"bookingDate": "2019-04-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Atlantic Aerospace",
+			"amount": -588.0,
+			"balance": -32203.0,
+			"type": "Fake account transaction",
+			"referenceID": "5771983184",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-23",
+			"valueDate": "2019-04-23",
+			"bookingDate": "2019-04-23",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : NetworksWorld",
+			"amount": 152.0,
+			"balance": -31615.0,
+			"type": "Fake account transaction",
+			"referenceID": "4807857477",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-22",
+			"valueDate": "2019-04-22",
+			"bookingDate": "2019-04-22",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : G-Shipping",
+			"amount": 376.0,
+			"balance": -31767.0,
+			"type": "Fake account transaction",
+			"referenceID": "7586656661",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-19",
+			"valueDate": "2019-04-19",
+			"bookingDate": "2019-04-19",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SuperStudios",
+			"amount": 840.0,
+			"balance": -32143.0,
+			"type": "Fake account transaction",
+			"referenceID": "3380692164",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-18",
+			"valueDate": "2019-04-18",
+			"bookingDate": "2019-04-18",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MegaFoods",
+			"amount": -546.0,
+			"balance": -32983.0,
+			"type": "Fake account transaction",
+			"referenceID": "4663836430",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-17",
+			"valueDate": "2019-04-17",
+			"bookingDate": "2019-04-17",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Security.Com",
+			"amount": -274.0,
+			"balance": -32437.0,
+			"type": "Fake account transaction",
+			"referenceID": "9488208607",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-13",
+			"valueDate": "2019-04-13",
+			"bookingDate": "2019-04-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Unity Bank",
+			"amount": 402.0,
+			"balance": -32163.0,
+			"type": "Fake account transaction",
+			"referenceID": "2240761780",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-10",
+			"valueDate": "2019-04-10",
+			"bookingDate": "2019-04-10",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Networks UK",
+			"amount": -534.0,
+			"balance": -32565.0,
+			"type": "Fake account transaction",
+			"referenceID": "2612169210",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-07",
+			"valueDate": "2019-04-07",
+			"bookingDate": "2019-04-07",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Green Studios",
+			"amount": 462.0,
+			"balance": -32031.0,
+			"type": "Fake account transaction",
+			"referenceID": "3755105791",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-04",
+			"valueDate": "2019-04-04",
+			"bookingDate": "2019-04-04",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : IndustrialWorld",
+			"amount": -718.0,
+			"balance": -32493.0,
+			"type": "Fake account transaction",
+			"referenceID": "5243783140",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-02",
+			"valueDate": "2019-04-02",
+			"bookingDate": "2019-04-02",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Motors Inc.",
+			"amount": 264.0,
+			"balance": -31775.0,
+			"type": "Fake account transaction",
+			"referenceID": "3459089098",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-04-01",
+			"valueDate": "2019-04-01",
+			"bookingDate": "2019-04-01",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Aerospace Labs",
+			"amount": -247.0,
+			"balance": -32039.0,
+			"type": "Fake account transaction",
+			"referenceID": "6254756768",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-27",
+			"valueDate": "2019-03-27",
+			"bookingDate": "2019-03-27",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : AudioCorp",
+			"amount": -654.0,
+			"balance": -31792.0,
+			"type": "Fake account transaction",
+			"referenceID": "8253562320",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-26",
+			"valueDate": "2019-03-26",
+			"bookingDate": "2019-03-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 14998.0,
+			"balance": -31138.0,
+			"type": "Fake account transaction",
+			"referenceID": "6910324957",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-26",
+			"valueDate": "2019-03-26",
+			"bookingDate": "2019-03-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Studios Ltd.",
+			"amount": 639.0,
+			"balance": -46136.0,
+			"type": "Fake account transaction",
+			"referenceID": "9105630053",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-25",
+			"valueDate": "2019-03-25",
+			"bookingDate": "2019-03-25",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : OmniRobotic",
+			"amount": -241.0,
+			"balance": -46775.0,
+			"type": "Fake account transaction",
+			"referenceID": "9394054020",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-24",
+			"valueDate": "2019-03-24",
+			"bookingDate": "2019-03-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 20042.0,
+			"balance": -46534.0,
+			"type": "Fake account transaction",
+			"referenceID": "2800726752",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-18",
+			"valueDate": "2019-03-18",
+			"bookingDate": "2019-03-18",
+			"description": "Type: Fake account transaction; Category: Fake; Description: OtherRecur/Fake money transfer : eBiotic",
+			"amount": 3050.0,
+			"balance": -66576.0,
+			"type": "Fake account transaction",
+			"referenceID": "7224983417",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-15",
+			"valueDate": "2019-03-15",
+			"bookingDate": "2019-03-15",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : ImportsCo",
+			"amount": -890.0,
+			"balance": -69626.0,
+			"type": "Fake account transaction",
+			"referenceID": "5625280879",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-13",
+			"valueDate": "2019-03-13",
+			"bookingDate": "2019-03-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : National Solar",
+			"amount": 110.0,
+			"balance": -68736.0,
+			"type": "Fake account transaction",
+			"referenceID": "7307263276",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-11",
+			"valueDate": "2019-03-11",
+			"bookingDate": "2019-03-11",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Vital Exports",
+			"amount": 203.0,
+			"balance": -68846.0,
+			"type": "Fake account transaction",
+			"referenceID": "5673132861",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-10",
+			"valueDate": "2019-03-10",
+			"bookingDate": "2019-03-10",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Energy Inc.",
+			"amount": 668.0,
+			"balance": -69049.0,
+			"type": "Fake account transaction",
+			"referenceID": "1703686404",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-09",
+			"valueDate": "2019-03-09",
+			"bookingDate": "2019-03-09",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Nano One",
+			"amount": -156.0,
+			"balance": -69717.0,
+			"type": "Fake account transaction",
+			"referenceID": "5858000352",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-08",
+			"valueDate": "2019-03-08",
+			"bookingDate": "2019-03-08",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MetroAudio",
+			"amount": 318.0,
+			"balance": -69561.0,
+			"type": "Fake account transaction",
+			"referenceID": "6888643761",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-06",
+			"valueDate": "2019-03-06",
+			"bookingDate": "2019-03-06",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SystemsCorp",
+			"amount": 198.0,
+			"balance": -69879.0,
+			"type": "Fake account transaction",
+			"referenceID": "5039301769",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-05",
+			"valueDate": "2019-03-05",
+			"bookingDate": "2019-03-05",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : National Imports",
+			"amount": -499.0,
+			"balance": -70077.0,
+			"type": "Fake account transaction",
+			"referenceID": "3662152337",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-03-03",
+			"valueDate": "2019-03-03",
+			"bookingDate": "2019-03-03",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Medical Ltd.",
+			"amount": -753.0,
+			"balance": -69578.0,
+			"type": "Fake account transaction",
+			"referenceID": "5422662180",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-28",
+			"valueDate": "2019-02-28",
+			"bookingDate": "2019-02-28",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Unity Bank",
+			"amount": -244.0,
+			"balance": -68825.0,
+			"type": "Fake account transaction",
+			"referenceID": "8079560183",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-27",
+			"valueDate": "2019-02-27",
+			"bookingDate": "2019-02-27",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Exports Mfg.",
+			"amount": 795.0,
+			"balance": -68581.0,
+			"type": "Fake account transaction",
+			"referenceID": "2295594753",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-26",
+			"valueDate": "2019-02-26",
+			"bookingDate": "2019-02-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 14939.0,
+			"balance": -69376.0,
+			"type": "Fake account transaction",
+			"referenceID": "9281182253",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-25",
+			"valueDate": "2019-02-25",
+			"bookingDate": "2019-02-25",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Robotic Ltd.",
+			"amount": 796.0,
+			"balance": -84315.0,
+			"type": "Fake account transaction",
+			"referenceID": "7116643591",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-24",
+			"valueDate": "2019-02-24",
+			"bookingDate": "2019-02-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 20070.0,
+			"balance": -85111.0,
+			"type": "Fake account transaction",
+			"referenceID": "7715029077",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-24",
+			"valueDate": "2019-02-24",
+			"bookingDate": "2019-02-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : HyperOnline",
+			"amount": 887.0,
+			"balance": -105181.0,
+			"type": "Fake account transaction",
+			"referenceID": "8029001856",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-23",
+			"valueDate": "2019-02-23",
+			"bookingDate": "2019-02-23",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Pacific Industrial",
+			"amount": -30.0,
+			"balance": -106068.0,
+			"type": "Fake account transaction",
+			"referenceID": "6190542756",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-19",
+			"valueDate": "2019-02-19",
+			"bookingDate": "2019-02-19",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : G-Audio",
+			"amount": 901.0,
+			"balance": -106038.0,
+			"type": "Fake account transaction",
+			"referenceID": "9308938788",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-17",
+			"valueDate": "2019-02-17",
+			"bookingDate": "2019-02-17",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MaterialsWorld",
+			"amount": -347.0,
+			"balance": -106939.0,
+			"type": "Fake account transaction",
+			"referenceID": "8833904837",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-15",
+			"valueDate": "2019-02-15",
+			"bookingDate": "2019-02-15",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Global Data",
+			"amount": -801.0,
+			"balance": -106592.0,
+			"type": "Fake account transaction",
+			"referenceID": "7456601170",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-14",
+			"valueDate": "2019-02-14",
+			"bookingDate": "2019-02-14",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Best Aerospace",
+			"amount": -255.0,
+			"balance": -105791.0,
+			"type": "Fake account transaction",
+			"referenceID": "3278553503",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-12",
+			"valueDate": "2019-02-12",
+			"bookingDate": "2019-02-12",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : eMedia",
+			"amount": 482.0,
+			"balance": -105536.0,
+			"type": "Fake account transaction",
+			"referenceID": "1807406236",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-11",
+			"valueDate": "2019-02-11",
+			"bookingDate": "2019-02-11",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Green Networks",
+			"amount": 462.0,
+			"balance": -106018.0,
+			"type": "Fake account transaction",
+			"referenceID": "2911881817",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-09",
+			"valueDate": "2019-02-09",
+			"bookingDate": "2019-02-09",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : eEnterprises",
+			"amount": 175.0,
+			"balance": -106480.0,
+			"type": "Fake account transaction",
+			"referenceID": "7783869681",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-05",
+			"valueDate": "2019-02-05",
+			"bookingDate": "2019-02-05",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : OnlineWorld",
+			"amount": -748.0,
+			"balance": -106655.0,
+			"type": "Fake account transaction",
+			"referenceID": "5608720901",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-04",
+			"valueDate": "2019-02-04",
+			"bookingDate": "2019-02-04",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Infinity Energy",
+			"amount": -660.0,
+			"balance": -105907.0,
+			"type": "Fake account transaction",
+			"referenceID": "4509227021",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-03",
+			"valueDate": "2019-02-03",
+			"bookingDate": "2019-02-03",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Vital Info",
+			"amount": 281.0,
+			"balance": -105247.0,
+			"type": "Fake account transaction",
+			"referenceID": "9206157853",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-02",
+			"valueDate": "2019-02-02",
+			"bookingDate": "2019-02-02",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MegaNetworks",
+			"amount": -909.0,
+			"balance": -105528.0,
+			"type": "Fake account transaction",
+			"referenceID": "5108516247",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-02-01",
+			"valueDate": "2019-02-01",
+			"bookingDate": "2019-02-01",
+			"description": "Type: Fake account transaction; Category: Fake; Description: OtherRecur/Fake money transfer : eBiotic",
+			"amount": 3050.0,
+			"balance": -104619.0,
+			"type": "Fake account transaction",
+			"referenceID": "6335479078",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-28",
+			"valueDate": "2019-01-28",
+			"bookingDate": "2019-01-28",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : OmniApparel",
+			"amount": -684.0,
+			"balance": -107669.0,
+			"type": "Fake account transaction",
+			"referenceID": "4235453227",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-26",
+			"valueDate": "2019-01-26",
+			"bookingDate": "2019-01-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 15084.0,
+			"balance": -106985.0,
+			"type": "Fake account transaction",
+			"referenceID": "4589115722",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-26",
+			"valueDate": "2019-01-26",
+			"bookingDate": "2019-01-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : National Biotic",
+			"amount": -370.0,
+			"balance": -122069.0,
+			"type": "Fake account transaction",
+			"referenceID": "9750205097",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-25",
+			"valueDate": "2019-01-25",
+			"bookingDate": "2019-01-25",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Petroleum One",
+			"amount": 940.0,
+			"balance": -121699.0,
+			"type": "Fake account transaction",
+			"referenceID": "7635122432",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-24",
+			"valueDate": "2019-01-24",
+			"bookingDate": "2019-01-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 20079.0,
+			"balance": -122639.0,
+			"type": "Fake account transaction",
+			"referenceID": "3867620898",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-24",
+			"valueDate": "2019-01-24",
+			"bookingDate": "2019-01-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : CircuitsNet",
+			"amount": 389.0,
+			"balance": -142718.0,
+			"type": "Fake account transaction",
+			"referenceID": "3937561637",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-23",
+			"valueDate": "2019-01-23",
+			"bookingDate": "2019-01-23",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : EnterprisesWorld",
+			"amount": 777.0,
+			"balance": -143107.0,
+			"type": "Fake account transaction",
+			"referenceID": "8722236817",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-22",
+			"valueDate": "2019-01-22",
+			"bookingDate": "2019-01-22",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Pacific Audio",
+			"amount": -418.0,
+			"balance": -143884.0,
+			"type": "Fake account transaction",
+			"referenceID": "7170983990",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-21",
+			"valueDate": "2019-01-21",
+			"bookingDate": "2019-01-21",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : BankCorp",
+			"amount": 205.0,
+			"balance": -143466.0,
+			"type": "Fake account transaction",
+			"referenceID": "4519377182",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-20",
+			"valueDate": "2019-01-20",
+			"bookingDate": "2019-01-20",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Atlantic Imports",
+			"amount": 378.0,
+			"balance": -143671.0,
+			"type": "Fake account transaction",
+			"referenceID": "1538376124",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-18",
+			"valueDate": "2019-01-18",
+			"bookingDate": "2019-01-18",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MedicalCo",
+			"amount": 158.0,
+			"balance": -144049.0,
+			"type": "Fake account transaction",
+			"referenceID": "8415230861",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-17",
+			"valueDate": "2019-01-17",
+			"bookingDate": "2019-01-17",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : iAerospace",
+			"amount": 576.0,
+			"balance": -144207.0,
+			"type": "Fake account transaction",
+			"referenceID": "5375906432",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-15",
+			"valueDate": "2019-01-15",
+			"bookingDate": "2019-01-15",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MedicalWorld",
+			"amount": -648.0,
+			"balance": -144783.0,
+			"type": "Fake account transaction",
+			"referenceID": "7298001998",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-14",
+			"valueDate": "2019-01-14",
+			"bookingDate": "2019-01-14",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Circuits Tech",
+			"amount": -966.0,
+			"balance": -144135.0,
+			"type": "Fake account transaction",
+			"referenceID": "8510754010",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-13",
+			"valueDate": "2019-01-13",
+			"bookingDate": "2019-01-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SuperTools",
+			"amount": -788.0,
+			"balance": -143169.0,
+			"type": "Fake account transaction",
+			"referenceID": "7216198181",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-12",
+			"valueDate": "2019-01-12",
+			"bookingDate": "2019-01-12",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : First Enterprises",
+			"amount": -927.0,
+			"balance": -142381.0,
+			"type": "Fake account transaction",
+			"referenceID": "4427458713",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-09",
+			"valueDate": "2019-01-09",
+			"bookingDate": "2019-01-09",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Tools Labs",
+			"amount": 383.0,
+			"balance": -141454.0,
+			"type": "Fake account transaction",
+			"referenceID": "8644164078",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-08",
+			"valueDate": "2019-01-08",
+			"bookingDate": "2019-01-08",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Monolith Motors",
+			"amount": -943.0,
+			"balance": -141837.0,
+			"type": "Fake account transaction",
+			"referenceID": "8261950812",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-07",
+			"valueDate": "2019-01-07",
+			"bookingDate": "2019-01-07",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : IndustrialCorp",
+			"amount": 68.0,
+			"balance": -140894.0,
+			"type": "Fake account transaction",
+			"referenceID": "1736871500",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-06",
+			"valueDate": "2019-01-06",
+			"bookingDate": "2019-01-06",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : First Bank",
+			"amount": -952.0,
+			"balance": -140962.0,
+			"type": "Fake account transaction",
+			"referenceID": "2043335051",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-05",
+			"valueDate": "2019-01-05",
+			"bookingDate": "2019-01-05",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Superior Apparel",
+			"amount": -135.0,
+			"balance": -140010.0,
+			"type": "Fake account transaction",
+			"referenceID": "2926167438",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-04",
+			"valueDate": "2019-01-04",
+			"bookingDate": "2019-01-04",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : FinancialCo",
+			"amount": 786.0,
+			"balance": -139875.0,
+			"type": "Fake account transaction",
+			"referenceID": "2756823367",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2019-01-01",
+			"valueDate": "2019-01-01",
+			"bookingDate": "2019-01-01",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Global Exports",
+			"amount": -975.0,
+			"balance": -140661.0,
+			"type": "Fake account transaction",
+			"referenceID": "8567128371",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-31",
+			"valueDate": "2018-12-31",
+			"bookingDate": "2018-12-31",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : iAudio",
+			"amount": 916.0,
+			"balance": -139686.0,
+			"type": "Fake account transaction",
+			"referenceID": "4610780721",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-29",
+			"valueDate": "2018-12-29",
+			"bookingDate": "2018-12-29",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Audio USA",
+			"amount": 593.0,
+			"balance": -140602.0,
+			"type": "Fake account transaction",
+			"referenceID": "8855866094",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-26",
+			"valueDate": "2018-12-26",
+			"bookingDate": "2018-12-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 15075.0,
+			"balance": -141195.0,
+			"type": "Fake account transaction",
+			"referenceID": "6798247674",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-26",
+			"valueDate": "2018-12-26",
+			"bookingDate": "2018-12-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Best Studios",
+			"amount": 190.0,
+			"balance": -156270.0,
+			"type": "Fake account transaction",
+			"referenceID": "4430489970",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-25",
+			"valueDate": "2018-12-25",
+			"bookingDate": "2018-12-25",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SolarCorp",
+			"amount": -353.0,
+			"balance": -156460.0,
+			"type": "Fake account transaction",
+			"referenceID": "3247920214",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-24",
+			"valueDate": "2018-12-24",
+			"bookingDate": "2018-12-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 19950.0,
+			"balance": -156107.0,
+			"type": "Fake account transaction",
+			"referenceID": "5632762982",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-24",
+			"valueDate": "2018-12-24",
+			"bookingDate": "2018-12-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Atlantic Energy",
+			"amount": 954.0,
+			"balance": -176057.0,
+			"type": "Fake account transaction",
+			"referenceID": "4720799931",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-22",
+			"valueDate": "2018-12-22",
+			"bookingDate": "2018-12-22",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MetroOnline",
+			"amount": 391.0,
+			"balance": -177011.0,
+			"type": "Fake account transaction",
+			"referenceID": "3080751159",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-21",
+			"valueDate": "2018-12-21",
+			"bookingDate": "2018-12-21",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : TransTools",
+			"amount": 666.0,
+			"balance": -177402.0,
+			"type": "Fake account transaction",
+			"referenceID": "5693367284",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-19",
+			"valueDate": "2018-12-19",
+			"bookingDate": "2018-12-19",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Financial Ltd.",
+			"amount": -873.0,
+			"balance": -178068.0,
+			"type": "Fake account transaction",
+			"referenceID": "7419076846",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-18",
+			"valueDate": "2018-12-18",
+			"bookingDate": "2018-12-18",
+			"description": "Type: Fake account transaction; Category: Fake; Description: OtherRecur/Fake money transfer : eBiotic",
+			"amount": 3050.0,
+			"balance": -177195.0,
+			"type": "Fake account transaction",
+			"referenceID": "9394116300",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-15",
+			"valueDate": "2018-12-15",
+			"bookingDate": "2018-12-15",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SuperMedia",
+			"amount": 683.0,
+			"balance": -180245.0,
+			"type": "Fake account transaction",
+			"referenceID": "8623138802",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-13",
+			"valueDate": "2018-12-13",
+			"bookingDate": "2018-12-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Bank One",
+			"amount": -611.0,
+			"balance": -180928.0,
+			"type": "Fake account transaction",
+			"referenceID": "9535752958",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-12",
+			"valueDate": "2018-12-12",
+			"bookingDate": "2018-12-12",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Apparel UK",
+			"amount": 766.0,
+			"balance": -180317.0,
+			"type": "Fake account transaction",
+			"referenceID": "1857437891",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-11",
+			"valueDate": "2018-12-11",
+			"bookingDate": "2018-12-11",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Pacific Motors",
+			"amount": -754.0,
+			"balance": -181083.0,
+			"type": "Fake account transaction",
+			"referenceID": "6676983202",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-10",
+			"valueDate": "2018-12-10",
+			"bookingDate": "2018-12-10",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : eSolar",
+			"amount": -822.0,
+			"balance": -180329.0,
+			"type": "Fake account transaction",
+			"referenceID": "1457023120",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-08",
+			"valueDate": "2018-12-08",
+			"bookingDate": "2018-12-08",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Green Bank",
+			"amount": 933.0,
+			"balance": -179507.0,
+			"type": "Fake account transaction",
+			"referenceID": "7210772927",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-05",
+			"valueDate": "2018-12-05",
+			"bookingDate": "2018-12-05",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Global Data",
+			"amount": 874.0,
+			"balance": -180440.0,
+			"type": "Fake account transaction",
+			"referenceID": "5130158160",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-04",
+			"valueDate": "2018-12-04",
+			"bookingDate": "2018-12-04",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : G-Petroleum",
+			"amount": -927.0,
+			"balance": -181314.0,
+			"type": "Fake account transaction",
+			"referenceID": "7815051970",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-03",
+			"valueDate": "2018-12-03",
+			"bookingDate": "2018-12-03",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Green Industrial",
+			"amount": 693.0,
+			"balance": -180387.0,
+			"type": "Fake account transaction",
+			"referenceID": "5101554907",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-12-01",
+			"valueDate": "2018-12-01",
+			"bookingDate": "2018-12-01",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Vital Security",
+			"amount": 575.0,
+			"balance": -181080.0,
+			"type": "Fake account transaction",
+			"referenceID": "2730319922",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-29",
+			"valueDate": "2018-11-29",
+			"bookingDate": "2018-11-29",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SystemsNet",
+			"amount": -814.0,
+			"balance": -181655.0,
+			"type": "Fake account transaction",
+			"referenceID": "8473070373",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-27",
+			"valueDate": "2018-11-27",
+			"bookingDate": "2018-11-27",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Exports Ltd.",
+			"amount": 586.0,
+			"balance": -180841.0,
+			"type": "Fake account transaction",
+			"referenceID": "4164104554",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-26",
+			"valueDate": "2018-11-26",
+			"bookingDate": "2018-11-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 15029.0,
+			"balance": -181427.0,
+			"type": "Fake account transaction",
+			"referenceID": "7588852407",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-26",
+			"valueDate": "2018-11-26",
+			"bookingDate": "2018-11-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Med UK",
+			"amount": 2.0,
+			"balance": -196456.0,
+			"type": "Fake account transaction",
+			"referenceID": "6875257690",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-24",
+			"valueDate": "2018-11-24",
+			"bookingDate": "2018-11-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 20003.0,
+			"balance": -196458.0,
+			"type": "Fake account transaction",
+			"referenceID": "4790441128",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-23",
+			"valueDate": "2018-11-23",
+			"bookingDate": "2018-11-23",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Superior Petroleum",
+			"amount": -559.0,
+			"balance": -216461.0,
+			"type": "Fake account transaction",
+			"referenceID": "3204577055",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-22",
+			"valueDate": "2018-11-22",
+			"bookingDate": "2018-11-22",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Online Labs",
+			"amount": 336.0,
+			"balance": -215902.0,
+			"type": "Fake account transaction",
+			"referenceID": "1692425282",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-21",
+			"valueDate": "2018-11-21",
+			"bookingDate": "2018-11-21",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : ExportsNet",
+			"amount": -991.0,
+			"balance": -216238.0,
+			"type": "Fake account transaction",
+			"referenceID": "1699177499",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-20",
+			"valueDate": "2018-11-20",
+			"bookingDate": "2018-11-20",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : First Foods",
+			"amount": -983.0,
+			"balance": -215247.0,
+			"type": "Fake account transaction",
+			"referenceID": "1382027504",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-18",
+			"valueDate": "2018-11-18",
+			"bookingDate": "2018-11-18",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : DataNet",
+			"amount": 765.0,
+			"balance": -214264.0,
+			"type": "Fake account transaction",
+			"referenceID": "2720224386",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-17",
+			"valueDate": "2018-11-17",
+			"bookingDate": "2018-11-17",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MedNet",
+			"amount": -117.0,
+			"balance": -215029.0,
+			"type": "Fake account transaction",
+			"referenceID": "1723733795",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-16",
+			"valueDate": "2018-11-16",
+			"bookingDate": "2018-11-16",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : G-Media",
+			"amount": -333.0,
+			"balance": -214912.0,
+			"type": "Fake account transaction",
+			"referenceID": "1251496370",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-14",
+			"valueDate": "2018-11-14",
+			"bookingDate": "2018-11-14",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Green Health",
+			"amount": -131.0,
+			"balance": -214579.0,
+			"type": "Fake account transaction",
+			"referenceID": "1687219102",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-13",
+			"valueDate": "2018-11-13",
+			"bookingDate": "2018-11-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Media One",
+			"amount": -349.0,
+			"balance": -214448.0,
+			"type": "Fake account transaction",
+			"referenceID": "9056542790",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-10",
+			"valueDate": "2018-11-10",
+			"bookingDate": "2018-11-10",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Unity Security",
+			"amount": 163.0,
+			"balance": -214099.0,
+			"type": "Fake account transaction",
+			"referenceID": "6859132825",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-08",
+			"valueDate": "2018-11-08",
+			"bookingDate": "2018-11-08",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : IndustrialWorld",
+			"amount": -286.0,
+			"balance": -214262.0,
+			"type": "Fake account transaction",
+			"referenceID": "5515794211",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-07",
+			"valueDate": "2018-11-07",
+			"bookingDate": "2018-11-07",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Monolith Security",
+			"amount": 732.0,
+			"balance": -213976.0,
+			"type": "Fake account transaction",
+			"referenceID": "2555216767",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-04",
+			"valueDate": "2018-11-04",
+			"bookingDate": "2018-11-04",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Shipping USA",
+			"amount": 185.0,
+			"balance": -214708.0,
+			"type": "Fake account transaction",
+			"referenceID": "9476676374",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-11-03",
+			"valueDate": "2018-11-03",
+			"bookingDate": "2018-11-03",
+			"description": "Type: Fake account transaction; Category: Fake; Description: OtherRecur/Fake money transfer : eBiotic",
+			"amount": 3050.0,
+			"balance": -214893.0,
+			"type": "Fake account transaction",
+			"referenceID": "2906849017",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-28",
+			"valueDate": "2018-10-28",
+			"bookingDate": "2018-10-28",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : ExportsCo",
+			"amount": -735.0,
+			"balance": -217943.0,
+			"type": "Fake account transaction",
+			"referenceID": "1062419489",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-26",
+			"valueDate": "2018-10-26",
+			"bookingDate": "2018-10-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 14976.0,
+			"balance": -217208.0,
+			"type": "Fake account transaction",
+			"referenceID": "9461366639",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-26",
+			"valueDate": "2018-10-26",
+			"bookingDate": "2018-10-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Pacific Financial",
+			"amount": -671.0,
+			"balance": -232184.0,
+			"type": "Fake account transaction",
+			"referenceID": "6295782251",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-25",
+			"valueDate": "2018-10-25",
+			"bookingDate": "2018-10-25",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Pacific Materials",
+			"amount": -239.0,
+			"balance": -231513.0,
+			"type": "Fake account transaction",
+			"referenceID": "6628582205",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-24",
+			"valueDate": "2018-10-24",
+			"bookingDate": "2018-10-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 20006.0,
+			"balance": -231274.0,
+			"type": "Fake account transaction",
+			"referenceID": "3598146427",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-23",
+			"valueDate": "2018-10-23",
+			"bookingDate": "2018-10-23",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Publishing Ltd.",
+			"amount": 594.0,
+			"balance": -251280.0,
+			"type": "Fake account transaction",
+			"referenceID": "8686195862",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-22",
+			"valueDate": "2018-10-22",
+			"bookingDate": "2018-10-22",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : National Online",
+			"amount": 409.0,
+			"balance": -251874.0,
+			"type": "Fake account transaction",
+			"referenceID": "1634217145",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-19",
+			"valueDate": "2018-10-19",
+			"bookingDate": "2018-10-19",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Global Bank",
+			"amount": -604.0,
+			"balance": -252283.0,
+			"type": "Fake account transaction",
+			"referenceID": "5402514849",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-18",
+			"valueDate": "2018-10-18",
+			"bookingDate": "2018-10-18",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Networks Ltd.",
+			"amount": 350.0,
+			"balance": -251679.0,
+			"type": "Fake account transaction",
+			"referenceID": "6998244648",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-16",
+			"valueDate": "2018-10-16",
+			"bookingDate": "2018-10-16",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Bank Mfg.",
+			"amount": 280.0,
+			"balance": -252029.0,
+			"type": "Fake account transaction",
+			"referenceID": "9554536984",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-14",
+			"valueDate": "2018-10-14",
+			"bookingDate": "2018-10-14",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Atlantic Imports",
+			"amount": 247.0,
+			"balance": -252309.0,
+			"type": "Fake account transaction",
+			"referenceID": "8762488626",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-13",
+			"valueDate": "2018-10-13",
+			"bookingDate": "2018-10-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Unity Medical",
+			"amount": -760.0,
+			"balance": -252556.0,
+			"type": "Fake account transaction",
+			"referenceID": "9944180047",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-11",
+			"valueDate": "2018-10-11",
+			"bookingDate": "2018-10-11",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MegaBank",
+			"amount": -498.0,
+			"balance": -251796.0,
+			"type": "Fake account transaction",
+			"referenceID": "9783881602",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-09",
+			"valueDate": "2018-10-09",
+			"bookingDate": "2018-10-09",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Global Systems",
+			"amount": -403.0,
+			"balance": -251298.0,
+			"type": "Fake account transaction",
+			"referenceID": "9224155211",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-08",
+			"valueDate": "2018-10-08",
+			"bookingDate": "2018-10-08",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : HyperAudio",
+			"amount": 943.0,
+			"balance": -250895.0,
+			"type": "Fake account transaction",
+			"referenceID": "3249492323",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-03",
+			"valueDate": "2018-10-03",
+			"bookingDate": "2018-10-03",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Vital Imports",
+			"amount": 587.0,
+			"balance": -251838.0,
+			"type": "Fake account transaction",
+			"referenceID": "5391384880",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-02",
+			"valueDate": "2018-10-02",
+			"bookingDate": "2018-10-02",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MetroSystems",
+			"amount": -298.0,
+			"balance": -252425.0,
+			"type": "Fake account transaction",
+			"referenceID": "5417374816",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-10-01",
+			"valueDate": "2018-10-01",
+			"bookingDate": "2018-10-01",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : eSystems",
+			"amount": 98.0,
+			"balance": -252127.0,
+			"type": "Fake account transaction",
+			"referenceID": "3137869969",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-26",
+			"valueDate": "2018-09-26",
+			"bookingDate": "2018-09-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 14992.0,
+			"balance": -252225.0,
+			"type": "Fake account transaction",
+			"referenceID": "6908359901",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-24",
+			"valueDate": "2018-09-24",
+			"bookingDate": "2018-09-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 20050.0,
+			"balance": -267217.0,
+			"type": "Fake account transaction",
+			"referenceID": "3856666857",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-24",
+			"valueDate": "2018-09-24",
+			"bookingDate": "2018-09-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : OnlineCo",
+			"amount": 169.0,
+			"balance": -287267.0,
+			"type": "Fake account transaction",
+			"referenceID": "1185624465",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-22",
+			"valueDate": "2018-09-22",
+			"bookingDate": "2018-09-22",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Enterprises One",
+			"amount": -937.0,
+			"balance": -287436.0,
+			"type": "Fake account transaction",
+			"referenceID": "4675372549",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-21",
+			"valueDate": "2018-09-21",
+			"bookingDate": "2018-09-21",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Media Labs",
+			"amount": -783.0,
+			"balance": -286499.0,
+			"type": "Fake account transaction",
+			"referenceID": "1619989353",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-20",
+			"valueDate": "2018-09-20",
+			"bookingDate": "2018-09-20",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Pacific Online",
+			"amount": 256.0,
+			"balance": -285716.0,
+			"type": "Fake account transaction",
+			"referenceID": "6065081184",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-19",
+			"valueDate": "2018-09-19",
+			"bookingDate": "2018-09-19",
+			"description": "Type: Fake account transaction; Category: Fake; Description: OtherRecur/Fake money transfer : eBiotic",
+			"amount": 3050.0,
+			"balance": -285972.0,
+			"type": "Fake account transaction",
+			"referenceID": "3246331239",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-19",
+			"valueDate": "2018-09-19",
+			"bookingDate": "2018-09-19",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Vital Motors",
+			"amount": 173.0,
+			"balance": -289022.0,
+			"type": "Fake account transaction",
+			"referenceID": "1661069806",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-17",
+			"valueDate": "2018-09-17",
+			"bookingDate": "2018-09-17",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : First Data",
+			"amount": -558.0,
+			"balance": -289195.0,
+			"type": "Fake account transaction",
+			"referenceID": "6956298630",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-15",
+			"valueDate": "2018-09-15",
+			"bookingDate": "2018-09-15",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : iAerospace",
+			"amount": 880.0,
+			"balance": -288637.0,
+			"type": "Fake account transaction",
+			"referenceID": "8060687946",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-14",
+			"valueDate": "2018-09-14",
+			"bookingDate": "2018-09-14",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : CircuitsCo",
+			"amount": -334.0,
+			"balance": -289517.0,
+			"type": "Fake account transaction",
+			"referenceID": "8643012647",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-13",
+			"valueDate": "2018-09-13",
+			"bookingDate": "2018-09-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : MetroAudio",
+			"amount": -432.0,
+			"balance": -289183.0,
+			"type": "Fake account transaction",
+			"referenceID": "1042288881",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-12",
+			"valueDate": "2018-09-12",
+			"bookingDate": "2018-09-12",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SecurityNet",
+			"amount": -793.0,
+			"balance": -288751.0,
+			"type": "Fake account transaction",
+			"referenceID": "4264500243",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-11",
+			"valueDate": "2018-09-11",
+			"bookingDate": "2018-09-11",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SystemsWorld",
+			"amount": -613.0,
+			"balance": -287958.0,
+			"type": "Fake account transaction",
+			"referenceID": "8984703437",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-10",
+			"valueDate": "2018-09-10",
+			"bookingDate": "2018-09-10",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Online Tech",
+			"amount": -591.0,
+			"balance": -287345.0,
+			"type": "Fake account transaction",
+			"referenceID": "9430708871",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-09",
+			"valueDate": "2018-09-09",
+			"bookingDate": "2018-09-09",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Systems One",
+			"amount": 4.0,
+			"balance": -286754.0,
+			"type": "Fake account transaction",
+			"referenceID": "6455390956",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-08",
+			"valueDate": "2018-09-08",
+			"bookingDate": "2018-09-08",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Atlantic Medical",
+			"amount": -21.0,
+			"balance": -286758.0,
+			"type": "Fake account transaction",
+			"referenceID": "3096407149",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-06",
+			"valueDate": "2018-09-06",
+			"bookingDate": "2018-09-06",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Infinity Apparel",
+			"amount": -830.0,
+			"balance": -286737.0,
+			"type": "Fake account transaction",
+			"referenceID": "3370175149",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-03",
+			"valueDate": "2018-09-03",
+			"bookingDate": "2018-09-03",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Best Health",
+			"amount": -762.0,
+			"balance": -285907.0,
+			"type": "Fake account transaction",
+			"referenceID": "1925037937",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-09-02",
+			"valueDate": "2018-09-02",
+			"bookingDate": "2018-09-02",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Systems USA",
+			"amount": 508.0,
+			"balance": -285145.0,
+			"type": "Fake account transaction",
+			"referenceID": "3788360507",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-31",
+			"valueDate": "2018-08-31",
+			"bookingDate": "2018-08-31",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Materials USA",
+			"amount": -454.0,
+			"balance": -285653.0,
+			"type": "Fake account transaction",
+			"referenceID": "2663758357",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-27",
+			"valueDate": "2018-08-27",
+			"bookingDate": "2018-08-27",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : StudiosWorld",
+			"amount": 621.0,
+			"balance": -285199.0,
+			"type": "Fake account transaction",
+			"referenceID": "3775756684",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-26",
+			"valueDate": "2018-08-26",
+			"bookingDate": "2018-08-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 14987.0,
+			"balance": -285820.0,
+			"type": "Fake account transaction",
+			"referenceID": "3774037857",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-24",
+			"valueDate": "2018-08-24",
+			"bookingDate": "2018-08-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 19949.0,
+			"balance": -300807.0,
+			"type": "Fake account transaction",
+			"referenceID": "2906043894",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-24",
+			"valueDate": "2018-08-24",
+			"bookingDate": "2018-08-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Petroleum Unlimited",
+			"amount": -968.0,
+			"balance": -320756.0,
+			"type": "Fake account transaction",
+			"referenceID": "2132390045",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-23",
+			"valueDate": "2018-08-23",
+			"bookingDate": "2018-08-23",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Superior Nano",
+			"amount": -418.0,
+			"balance": -319788.0,
+			"type": "Fake account transaction",
+			"referenceID": "6560610520",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-22",
+			"valueDate": "2018-08-22",
+			"bookingDate": "2018-08-22",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Networks UK",
+			"amount": 878.0,
+			"balance": -319370.0,
+			"type": "Fake account transaction",
+			"referenceID": "1552199224",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-21",
+			"valueDate": "2018-08-21",
+			"bookingDate": "2018-08-21",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Union Data",
+			"amount": -341.0,
+			"balance": -320248.0,
+			"type": "Fake account transaction",
+			"referenceID": "9194045455",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-19",
+			"valueDate": "2018-08-19",
+			"bookingDate": "2018-08-19",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Biotic UK",
+			"amount": 370.0,
+			"balance": -319907.0,
+			"type": "Fake account transaction",
+			"referenceID": "9958757688",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-18",
+			"valueDate": "2018-08-18",
+			"bookingDate": "2018-08-18",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Biotic Labs",
+			"amount": -924.0,
+			"balance": -320277.0,
+			"type": "Fake account transaction",
+			"referenceID": "8169416594",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-15",
+			"valueDate": "2018-08-15",
+			"bookingDate": "2018-08-15",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : NetworksCo",
+			"amount": 973.0,
+			"balance": -319353.0,
+			"type": "Fake account transaction",
+			"referenceID": "4344087176",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-14",
+			"valueDate": "2018-08-14",
+			"bookingDate": "2018-08-14",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Systems Tech",
+			"amount": 484.0,
+			"balance": -320326.0,
+			"type": "Fake account transaction",
+			"referenceID": "3164266377",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-12",
+			"valueDate": "2018-08-12",
+			"bookingDate": "2018-08-12",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : iIndustrial",
+			"amount": 51.0,
+			"balance": -320810.0,
+			"type": "Fake account transaction",
+			"referenceID": "7426868390",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-11",
+			"valueDate": "2018-08-11",
+			"bookingDate": "2018-08-11",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Medical Labs",
+			"amount": 532.0,
+			"balance": -320861.0,
+			"type": "Fake account transaction",
+			"referenceID": "5218777245",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-09",
+			"valueDate": "2018-08-09",
+			"bookingDate": "2018-08-09",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Atlantic Exports",
+			"amount": -734.0,
+			"balance": -321393.0,
+			"type": "Fake account transaction",
+			"referenceID": "4841880560",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-08",
+			"valueDate": "2018-08-08",
+			"bookingDate": "2018-08-08",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Shipping One",
+			"amount": -514.0,
+			"balance": -320659.0,
+			"type": "Fake account transaction",
+			"referenceID": "4938528423",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-07",
+			"valueDate": "2018-08-07",
+			"bookingDate": "2018-08-07",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Green Bank",
+			"amount": -584.0,
+			"balance": -320145.0,
+			"type": "Fake account transaction",
+			"referenceID": "8374241276",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-06",
+			"valueDate": "2018-08-06",
+			"bookingDate": "2018-08-06",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : National Audio",
+			"amount": -178.0,
+			"balance": -319561.0,
+			"type": "Fake account transaction",
+			"referenceID": "4856147047",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-05",
+			"valueDate": "2018-08-05",
+			"bookingDate": "2018-08-05",
+			"description": "Type: Fake account transaction; Category: Fake; Description: OtherRecur/Fake money transfer : eBiotic",
+			"amount": 3050.0,
+			"balance": -319383.0,
+			"type": "Fake account transaction",
+			"referenceID": "3713010103",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-05",
+			"valueDate": "2018-08-05",
+			"bookingDate": "2018-08-05",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Apparel Tech",
+			"amount": 324.0,
+			"balance": -322433.0,
+			"type": "Fake account transaction",
+			"referenceID": "3683232019",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-04",
+			"valueDate": "2018-08-04",
+			"bookingDate": "2018-08-04",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Union Financial",
+			"amount": -501.0,
+			"balance": -322757.0,
+			"type": "Fake account transaction",
+			"referenceID": "3756544685",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-08-01",
+			"valueDate": "2018-08-01",
+			"bookingDate": "2018-08-01",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : EnergyWorld",
+			"amount": -824.0,
+			"balance": -322256.0,
+			"type": "Fake account transaction",
+			"referenceID": "1081710466",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-30",
+			"valueDate": "2018-07-30",
+			"bookingDate": "2018-07-30",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : RoboticNet",
+			"amount": 966.0,
+			"balance": -321432.0,
+			"type": "Fake account transaction",
+			"referenceID": "1972883429",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-28",
+			"valueDate": "2018-07-28",
+			"bookingDate": "2018-07-28",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Superior Tools",
+			"amount": -362.0,
+			"balance": -322398.0,
+			"type": "Fake account transaction",
+			"referenceID": "6260455779",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-26",
+			"valueDate": "2018-07-26",
+			"bookingDate": "2018-07-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 14940.0,
+			"balance": -322036.0,
+			"type": "Fake account transaction",
+			"referenceID": "4165307263",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-26",
+			"valueDate": "2018-07-26",
+			"bookingDate": "2018-07-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Best Petroleum",
+			"amount": 757.0,
+			"balance": -336976.0,
+			"type": "Fake account transaction",
+			"referenceID": "5817215933",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-25",
+			"valueDate": "2018-07-25",
+			"bookingDate": "2018-07-25",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Energy One",
+			"amount": 89.0,
+			"balance": -337733.0,
+			"type": "Fake account transaction",
+			"referenceID": "5776155018",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-24",
+			"valueDate": "2018-07-24",
+			"bookingDate": "2018-07-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 19934.0,
+			"balance": -337822.0,
+			"type": "Fake account transaction",
+			"referenceID": "4629088024",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-20",
+			"valueDate": "2018-07-20",
+			"bookingDate": "2018-07-20",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Audio One",
+			"amount": -657.0,
+			"balance": -357756.0,
+			"type": "Fake account transaction",
+			"referenceID": "7998836468",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-19",
+			"valueDate": "2018-07-19",
+			"bookingDate": "2018-07-19",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Online.Com",
+			"amount": 403.0,
+			"balance": -357099.0,
+			"type": "Fake account transaction",
+			"referenceID": "9755354849",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-18",
+			"valueDate": "2018-07-18",
+			"bookingDate": "2018-07-18",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Atlantic Petroleum",
+			"amount": -866.0,
+			"balance": -357502.0,
+			"type": "Fake account transaction",
+			"referenceID": "4492142374",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-15",
+			"valueDate": "2018-07-15",
+			"bookingDate": "2018-07-15",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Green Foods",
+			"amount": 406.0,
+			"balance": -356636.0,
+			"type": "Fake account transaction",
+			"referenceID": "4630263005",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-14",
+			"valueDate": "2018-07-14",
+			"bookingDate": "2018-07-14",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : iMedia",
+			"amount": -602.0,
+			"balance": -357042.0,
+			"type": "Fake account transaction",
+			"referenceID": "5497899521",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-13",
+			"valueDate": "2018-07-13",
+			"bookingDate": "2018-07-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Aerospace Ltd.",
+			"amount": 798.0,
+			"balance": -356440.0,
+			"type": "Fake account transaction",
+			"referenceID": "7206795125",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-10",
+			"valueDate": "2018-07-10",
+			"bookingDate": "2018-07-10",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Tools One",
+			"amount": -665.0,
+			"balance": -357238.0,
+			"type": "Fake account transaction",
+			"referenceID": "7827207563",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-09",
+			"valueDate": "2018-07-09",
+			"bookingDate": "2018-07-09",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Union Nano",
+			"amount": 570.0,
+			"balance": -356573.0,
+			"type": "Fake account transaction",
+			"referenceID": "6830580274",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-07",
+			"valueDate": "2018-07-07",
+			"bookingDate": "2018-07-07",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Publishing One",
+			"amount": -583.0,
+			"balance": -357143.0,
+			"type": "Fake account transaction",
+			"referenceID": "5236525483",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-06",
+			"valueDate": "2018-07-06",
+			"bookingDate": "2018-07-06",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Nano USA",
+			"amount": 803.0,
+			"balance": -356560.0,
+			"type": "Fake account transaction",
+			"referenceID": "6911881937",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-05",
+			"valueDate": "2018-07-05",
+			"bookingDate": "2018-07-05",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Green Media",
+			"amount": -436.0,
+			"balance": -357363.0,
+			"type": "Fake account transaction",
+			"referenceID": "9021589820",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-04",
+			"valueDate": "2018-07-04",
+			"bookingDate": "2018-07-04",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : IndustrialWorld",
+			"amount": -271.0,
+			"balance": -356927.0,
+			"type": "Fake account transaction",
+			"referenceID": "3424151307",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-07-01",
+			"valueDate": "2018-07-01",
+			"bookingDate": "2018-07-01",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : PetroleumCo",
+			"amount": 382.0,
+			"balance": -356656.0,
+			"type": "Fake account transaction",
+			"referenceID": "2491808925",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-30",
+			"valueDate": "2018-06-30",
+			"bookingDate": "2018-06-30",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Publishing Ltd.",
+			"amount": 320.0,
+			"balance": -357038.0,
+			"type": "Fake account transaction",
+			"referenceID": "1273732617",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-29",
+			"valueDate": "2018-06-29",
+			"bookingDate": "2018-06-29",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Pacific Medical",
+			"amount": 549.0,
+			"balance": -357358.0,
+			"type": "Fake account transaction",
+			"referenceID": "8419033694",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-28",
+			"valueDate": "2018-06-28",
+			"bookingDate": "2018-06-28",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Monolith Imports",
+			"amount": -164.0,
+			"balance": -357907.0,
+			"type": "Fake account transaction",
+			"referenceID": "3848001791",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-26",
+			"valueDate": "2018-06-26",
+			"bookingDate": "2018-06-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 14970.0,
+			"balance": -357743.0,
+			"type": "Fake account transaction",
+			"referenceID": "4840173223",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-24",
+			"valueDate": "2018-06-24",
+			"bookingDate": "2018-06-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 20012.0,
+			"balance": -372713.0,
+			"type": "Fake account transaction",
+			"referenceID": "5770429059",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-24",
+			"valueDate": "2018-06-24",
+			"bookingDate": "2018-06-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Best Data",
+			"amount": 44.0,
+			"balance": -392725.0,
+			"type": "Fake account transaction",
+			"referenceID": "4468165795",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-22",
+			"valueDate": "2018-06-22",
+			"bookingDate": "2018-06-22",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Industrial Ltd.",
+			"amount": 236.0,
+			"balance": -392769.0,
+			"type": "Fake account transaction",
+			"referenceID": "9907240098",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-21",
+			"valueDate": "2018-06-21",
+			"bookingDate": "2018-06-21",
+			"description": "Type: Fake account transaction; Category: Fake; Description: OtherRecur/Fake money transfer : eBiotic",
+			"amount": 3050.0,
+			"balance": -393005.0,
+			"type": "Fake account transaction",
+			"referenceID": "3674957765",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-20",
+			"valueDate": "2018-06-20",
+			"bookingDate": "2018-06-20",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Data Labs",
+			"amount": -767.0,
+			"balance": -396055.0,
+			"type": "Fake account transaction",
+			"referenceID": "6402935519",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-19",
+			"valueDate": "2018-06-19",
+			"bookingDate": "2018-06-19",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Apparel Inc.",
+			"amount": 102.0,
+			"balance": -395288.0,
+			"type": "Fake account transaction",
+			"referenceID": "5266638699",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-16",
+			"valueDate": "2018-06-16",
+			"bookingDate": "2018-06-16",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Solar USA",
+			"amount": -779.0,
+			"balance": -395390.0,
+			"type": "Fake account transaction",
+			"referenceID": "2806902711",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-14",
+			"valueDate": "2018-06-14",
+			"bookingDate": "2018-06-14",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : First Biotic",
+			"amount": -939.0,
+			"balance": -394611.0,
+			"type": "Fake account transaction",
+			"referenceID": "3813784682",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-13",
+			"valueDate": "2018-06-13",
+			"bookingDate": "2018-06-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Medical One",
+			"amount": 834.0,
+			"balance": -393672.0,
+			"type": "Fake account transaction",
+			"referenceID": "5168565336",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-12",
+			"valueDate": "2018-06-12",
+			"bookingDate": "2018-06-12",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : eSystems",
+			"amount": 478.0,
+			"balance": -394506.0,
+			"type": "Fake account transaction",
+			"referenceID": "6024833095",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-08",
+			"valueDate": "2018-06-08",
+			"bookingDate": "2018-06-08",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : ToolsCo",
+			"amount": -663.0,
+			"balance": -394984.0,
+			"type": "Fake account transaction",
+			"referenceID": "9098936159",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-07",
+			"valueDate": "2018-06-07",
+			"bookingDate": "2018-06-07",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Unity Med",
+			"amount": 38.0,
+			"balance": -394321.0,
+			"type": "Fake account transaction",
+			"referenceID": "8907487702",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-05",
+			"valueDate": "2018-06-05",
+			"bookingDate": "2018-06-05",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Data Inc.",
+			"amount": -410.0,
+			"balance": -394359.0,
+			"type": "Fake account transaction",
+			"referenceID": "8149308617",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-04",
+			"valueDate": "2018-06-04",
+			"bookingDate": "2018-06-04",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : iNano",
+			"amount": 637.0,
+			"balance": -393949.0,
+			"type": "Fake account transaction",
+			"referenceID": "1429823043",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-06-01",
+			"valueDate": "2018-06-01",
+			"bookingDate": "2018-06-01",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : eMaterials",
+			"amount": -327.0,
+			"balance": -394586.0,
+			"type": "Fake account transaction",
+			"referenceID": "3844239095",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-29",
+			"valueDate": "2018-05-29",
+			"bookingDate": "2018-05-29",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Biotic Unlimited",
+			"amount": 18.0,
+			"balance": -394259.0,
+			"type": "Fake account transaction",
+			"referenceID": "4826732922",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-28",
+			"valueDate": "2018-05-28",
+			"bookingDate": "2018-05-28",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Health Inc.",
+			"amount": -864.0,
+			"balance": -394277.0,
+			"type": "Fake account transaction",
+			"referenceID": "7219325532",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-26",
+			"valueDate": "2018-05-26",
+			"bookingDate": "2018-05-26",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Secondary/Fake money transfer : OmniMaterials",
+			"amount": 15097.0,
+			"balance": -393413.0,
+			"type": "Fake account transaction",
+			"referenceID": "2588861144",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-24",
+			"valueDate": "2018-05-24",
+			"bookingDate": "2018-05-24",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Primary/Fake money transfer : Nano Unlimited",
+			"amount": 19879.0,
+			"balance": -408510.0,
+			"type": "Fake account transaction",
+			"referenceID": "2877316157",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-23",
+			"valueDate": "2018-05-23",
+			"bookingDate": "2018-05-23",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Medical Tech",
+			"amount": -416.0,
+			"balance": -428389.0,
+			"type": "Fake account transaction",
+			"referenceID": "3797284151",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-22",
+			"valueDate": "2018-05-22",
+			"bookingDate": "2018-05-22",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Med USA",
+			"amount": -832.0,
+			"balance": -427973.0,
+			"type": "Fake account transaction",
+			"referenceID": "5796174068",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-20",
+			"valueDate": "2018-05-20",
+			"bookingDate": "2018-05-20",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SuperMaterials",
+			"amount": 408.0,
+			"balance": -427141.0,
+			"type": "Fake account transaction",
+			"referenceID": "5081332946",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-17",
+			"valueDate": "2018-05-17",
+			"bookingDate": "2018-05-17",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : InfoCo",
+			"amount": 748.0,
+			"balance": -427549.0,
+			"type": "Fake account transaction",
+			"referenceID": "7605226266",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-16",
+			"valueDate": "2018-05-16",
+			"bookingDate": "2018-05-16",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Global Nano",
+			"amount": -700.0,
+			"balance": -428297.0,
+			"type": "Fake account transaction",
+			"referenceID": "3196654447",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-15",
+			"valueDate": "2018-05-15",
+			"bookingDate": "2018-05-15",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : AerospaceWorld",
+			"amount": -320.0,
+			"balance": -427597.0,
+			"type": "Fake account transaction",
+			"referenceID": "9982538126",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-13",
+			"valueDate": "2018-05-13",
+			"bookingDate": "2018-05-13",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Energy Inc.",
+			"amount": -76.0,
+			"balance": -427277.0,
+			"type": "Fake account transaction",
+			"referenceID": "6268706139",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-12",
+			"valueDate": "2018-05-12",
+			"bookingDate": "2018-05-12",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Unity Media",
+			"amount": -458.0,
+			"balance": -427201.0,
+			"type": "Fake account transaction",
+			"referenceID": "2620779092",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-10",
+			"valueDate": "2018-05-10",
+			"bookingDate": "2018-05-10",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Publishing Ltd.",
+			"amount": -354.0,
+			"balance": -426743.0,
+			"type": "Fake account transaction",
+			"referenceID": "1491419680",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-09",
+			"valueDate": "2018-05-09",
+			"bookingDate": "2018-05-09",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : First Studios",
+			"amount": -47.0,
+			"balance": -426389.0,
+			"type": "Fake account transaction",
+			"referenceID": "8070321700",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-08",
+			"valueDate": "2018-05-08",
+			"bookingDate": "2018-05-08",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : Info.Com",
+			"amount": 484.0,
+			"balance": -426342.0,
+			"type": "Fake account transaction",
+			"referenceID": "2608824285",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-07",
+			"valueDate": "2018-05-07",
+			"bookingDate": "2018-05-07",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : SuperSecurity",
+			"amount": 115.0,
+			"balance": -426826.0,
+			"type": "Fake account transaction",
+			"referenceID": "9890618471",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-05",
+			"valueDate": "2018-05-05",
+			"bookingDate": "2018-05-05",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : EnergyCo",
+			"amount": 632.0,
+			"balance": -426941.0,
+			"type": "Fake account transaction",
+			"referenceID": "1710396135",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		},
+		{
+			"onDate": "2018-05-04",
+			"valueDate": "2018-05-04",
+			"bookingDate": "2018-05-04",
+			"description": "Type: Fake account transaction; Category: Fake; Description: Fake money transfer : OmniAerospace",
+			"amount": 827.0,
+			"balance": -427573.0,
+			"type": "Fake account transaction",
+			"referenceID": "1688377811",
+			"params": [{
+				"name": "bankCategory",
+				"value": "Fake"
+			}]
+		}]
+	}]
 }
