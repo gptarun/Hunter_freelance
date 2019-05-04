@@ -133,7 +133,7 @@ public class DataService {
 			});
 		} catch (GraphQLException | IOException e) {
 			logger.error("cannot create hunter session due to :- ", e);
-			throw new RuntimeException("cannot create hunter session due to :- ", e);
+			throw new RuntimeException(e);
 		} 
 		return data;
 	}
@@ -156,7 +156,7 @@ public class DataService {
 		} catch (IOException e) {
 			reponseMap.put("Error", "Some exception");
 			logger.error("could not get the respone of query me operation due to :- ", e);
-			throw new RuntimeException("could not get the respone of query me operation due to :- ", e);
+			throw new RuntimeException(e);
 		}
 		return reponseMap;
 
@@ -195,7 +195,7 @@ public class DataService {
 			bw.close();
 		} catch (IOException e) {
 			logger.error("cannot write data to file due to :- ", e);
-			throw new RuntimeException("cannot write data to file due to :- ", e);
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -205,7 +205,7 @@ public class DataService {
 				httpPost(url, convertPayloadToExtrace(payload, methodType));
 			} catch (IOException e) {
 				logger.error("cannot send request to instantator due to :- ", e);
-				throw new RuntimeException("cannot send request to instantator due to :- ", e);
+				throw new RuntimeException(e);
 			}
 		}
 	}
